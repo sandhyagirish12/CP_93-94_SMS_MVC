@@ -21,5 +21,9 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Dashboard");
         }
+        public ActionResult CreateEmployee()
+        {
+            return View("CreateEmployee");
+        }
     }
 }

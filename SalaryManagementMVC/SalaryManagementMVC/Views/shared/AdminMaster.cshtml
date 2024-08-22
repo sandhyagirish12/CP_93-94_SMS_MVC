@@ -33,7 +33,7 @@
                 <div id="sidebar">
                     <ul>
                         <li><a href="AdminDashboard.aspx">Dashboard</a></li>
-                        <li><a href="CreateEmployee.aspx">Employee</a></li>
+                        @Html.ActionLink("Employee", "CreateEmployee")
                         <li><a href="Payroll.aspx">Payroll</a></li>
                         <li><a href="Loan.aspx">Loan</a></li>
                         <li><a href="Leave.aspx">Leave</a></li>
@@ -42,7 +42,6 @@
                         <li><a href="Allowance.aspx">Allowance</a></li>
                     </ul>
                 </div>
-
                 <div id="content">
                     @RenderBody()
                 </div>

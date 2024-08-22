@@ -116,6 +116,7 @@
     <Content Include="Views\shared\_EmployeeHome.cshtml" />
     <Content Include="Views\shared\AdminMaster.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\CreateEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
