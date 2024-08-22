@@ -11,7 +11,7 @@ namespace SalaryManagementMVC.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            return View("Home");
         }
     }
 }
