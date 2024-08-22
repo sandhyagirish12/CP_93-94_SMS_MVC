@@ -32,14 +32,32 @@
             <div id="main-content">
                 <div id="sidebar">
                     <ul>
-                        <li><a href="AdminDashboard.aspx">Dashboard</a></li>
-                        @Html.ActionLink("Employee", "CreateEmployee")
-                        <li><a href="Payroll.aspx">Payroll</a></li>
-                        <li><a href="Loan.aspx">Loan</a></li>
-                        <li><a href="Leave.aspx">Leave</a></li>
-                        <li><a href="Deduction.aspx">Deduction</a></li>
-                        <li><a href="Department.aspx">Department</a></li>
-                        <li><a href="Allowance.aspx">Allowance</a></li>
+                       
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "Dashboard", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Employee", "CreateEmployee", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Payroll", "ManagePayroll", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Loan", "ManageLoan", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Leave", "ManageLeave", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Deduction", "ManageDeduction", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Department", "ManageDepartment", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Allowance", "ManageAllowance", null, new { @class = "nav-link" })
+                        </li>
+                        
                     </ul>
                 </div>
                 <div id="content">
