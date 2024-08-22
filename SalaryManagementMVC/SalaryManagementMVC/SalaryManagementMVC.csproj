@@ -90,7 +90,6 @@
   <ItemGroup>
     <Content Include="Content\css\Admin.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\Site.css" />
     <Content Include="Content\img\ay.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -108,7 +107,6 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\shared\_Layout.cshtml" />
     <Content Include="Views\shared\_AdminHome.cshtml" />
     <Content Include="Views\Admin\Home.cshtml" />
     <Content Include="Views\Admin\Registration.cshtml" />
