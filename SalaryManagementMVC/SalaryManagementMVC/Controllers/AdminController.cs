@@ -17,6 +17,9 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Registration");
         }
-        
+        public ActionResult Dashboard()
+        {
+            return View("Dashboard");
+        }
     }
 }
