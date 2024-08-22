@@ -7,7 +7,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-   @* <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/css/Admin.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -23,8 +22,13 @@
                 <h1 class="h4 mb-0">Salary Management System</h1>
             </div>
             <div>
-                <a href="AdminRegistration.aspx" class="btn btn-secondary">Register</a>
-                <a href="AdminLogin.aspx" class="btn btn-primary me-2">Login</a>
+                @*<a href="AdminRegistration.aspx" class="btn btn-secondary">Register</a>
+        <a href="AdminLogin.aspx" class="btn btn-primary me-2">Login</a>*@
+                <!--@Html.ActionLink("Register", "Register")
+                @Html.ActionLink("Login", "Index")-->
+                @Html.ActionLink("Register", "Register", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Login", "Index", null, new { @class = "btn btn-primary me-2" })
+
             </div>
 
         </header>
