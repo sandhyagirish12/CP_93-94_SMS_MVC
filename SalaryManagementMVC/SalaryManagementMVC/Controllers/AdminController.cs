@@ -19,6 +19,16 @@ namespace SalaryManagementMVC.Controllers
             return View("Registration");
         }
 
+        public ActionResult VerifyEmail()
+        {
+            return View("VerifyEmail");
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View("ResetPassword");
+        }
+
         public ActionResult Dashboard()
         {
             return View("Dashboard");

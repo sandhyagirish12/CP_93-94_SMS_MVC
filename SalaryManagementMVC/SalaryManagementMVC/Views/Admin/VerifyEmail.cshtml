@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "VerifyEmail";
+    Layout = "~/Views/Shared/_AdminHome.cshtml";
+
+}
+
+<div class="login-container d-flex justify-content-center align-items-center min-vh-100">
+    <main class="form-signin w-100" style="max-width: 400px;">
+        <form>
+            <h1 class="h3 mb-3 fw-normal text-center">Forgot Password</h1>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                <label for="floatingEmail">Email address</label>
+            </div>
+
+            @Html.ActionLink("Send Verification Code", "ResetPassword", null, new { @class = "btn btn-primary w-100 py-2" })
+
+        </form>
+    </main>
+</div>
+
