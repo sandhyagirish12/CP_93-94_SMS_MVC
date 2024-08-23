@@ -127,6 +127,7 @@
     <Content Include="Views\Employee\Loan.cshtml" />
     <Content Include="Views\Employee\Leave.cshtml" />
     <Content Include="Views\Employee\VerifyEmail.cshtml" />
+    <Content Include="Views\Employee\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

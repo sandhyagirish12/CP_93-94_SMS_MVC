@@ -14,9 +14,8 @@
                 <label for="floatingEmail">Email address</label>
             </div>
 
-
-            <a href="ResetPassword.aspx" class="btn btn-primary w-100 py-2">Send Verification Code</a>
-
+            @*<a href="ResetPassword.aspx" class="btn btn-primary w-100 py-2">Send Verification Code</a>*@
+            @Html.ActionLink("Send Verification Code", "ResetPassword", null, new { @class = "btn btn-primary w-100 py-2" })
 
         </form>
     </main>
