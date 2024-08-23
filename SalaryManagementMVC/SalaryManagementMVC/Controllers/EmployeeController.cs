@@ -14,6 +14,11 @@ namespace SalaryManagementMVC.Controllers
             return View("Home");
         }
 
+        public ActionResult VerifyEmail()
+        {
+            return View("VerifyEmail");
+        }
+
         public ActionResult Dashboard()
         {
             return View("Dashboard");

@@ -126,6 +126,7 @@
     <Content Include="Views\Employee\Payroll.cshtml" />
     <Content Include="Views\Employee\Loan.cshtml" />
     <Content Include="Views\Employee\Leave.cshtml" />
+    <Content Include="Views\Employee\VerifyEmail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

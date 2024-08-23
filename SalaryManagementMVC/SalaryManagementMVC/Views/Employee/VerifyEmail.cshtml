@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "VerifyEmail";
+    Layout = "~/Views/shared/_EmployeeHome.cshtml";
+}
+
+<div class="login-container d-flex justify-content-center align-items-center min-vh-100">
+    <main class="form-signin w-100" style="max-width: 400px;">
+        <form>
+            <h1 class="h3 mb-3 fw-normal text-center">Forgot Password</h1>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                <label for="floatingEmail">Email address</label>
+            </div>
+
+
+            <a href="ResetPassword.aspx" class="btn btn-primary w-100 py-2">Send Verification Code</a>
+
+
+        </form>
+    </main>
+</div>
