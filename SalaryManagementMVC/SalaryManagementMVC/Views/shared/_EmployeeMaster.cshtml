@@ -31,10 +31,18 @@
             <div id="main-content">
                 <div id="sidebar">
                     <ul>
-                        <li><a href="EmployeeDashboard.aspx">Dashboard</a></li>
-                        <li><a href="Payroll.aspx">Payroll</a></li>
-                        <li><a href="LoanRequest.aspx">Loan</a></li>
-                        <li><a href="LeaveRequest.aspx">Leave</a></li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "Dashboard", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "Payroll", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "Loan", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Dashboard", "Leave", null, new { @class = "nav-link" })
+                        </li>
                     </ul>
                 </div>
 

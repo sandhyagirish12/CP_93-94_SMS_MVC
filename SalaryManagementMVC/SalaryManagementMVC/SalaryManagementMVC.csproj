@@ -123,6 +123,9 @@
     <Content Include="Views\Admin\Department.cshtml" />
     <Content Include="Views\shared\_EmployeeMaster.cshtml" />
     <Content Include="Views\Employee\Dashboard.cshtml" />
+    <Content Include="Views\Employee\Payroll.cshtml" />
+    <Content Include="Views\Employee\Loan.cshtml" />
+    <Content Include="Views\Employee\Leave.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
