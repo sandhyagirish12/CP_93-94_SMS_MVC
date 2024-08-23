@@ -18,5 +18,20 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Dashboard");
         }
+
+        public ActionResult Payroll()
+        {
+            return View("Payroll");
+        }
+
+        public ActionResult Loan()
+        {
+            return View("Loan");
+        }
+
+        public ActionResult Leave()
+        {
+            return View("Leave");
+        }
     }
 }
