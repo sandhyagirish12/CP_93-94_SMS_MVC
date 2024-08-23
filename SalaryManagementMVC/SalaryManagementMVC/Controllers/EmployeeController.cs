@@ -13,5 +13,10 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Home");
         }
+
+        public ActionResult Dashboard()
+        {
+            return View("Dashboard");
+        }
     }
 }
