@@ -92,6 +92,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\img\ay.png" />
     <Content Include="Global.asax" />
+    <Content Include="SQL\salarydb.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
