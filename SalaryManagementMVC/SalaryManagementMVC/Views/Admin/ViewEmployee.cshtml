@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ViewEmployee";
+    Layout = "~/Views/shared/AdminMaster.cshtml";
+
+}
+
+<div class="container mt-5">
+   
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            @Html.ActionLink("Create Account", "CreateEmployee", "Admin", null, new { @class = "nav-link", id = "create-tab", role = "tab", aria_controls = "create" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("View Employees", "ViewEmployee", "Admin", null, new { @class = "nav-link active", id = "view-tab", role = "tab", aria_controls = "view" })
+        </li>
+    </ul>
+
+    @*Dummy table*@
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="view" role="tabpanel" aria-labelledby="view-tab">
+            <div class="table-container mt-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>HR</td>
+                            <td>Manager</td>
+                            <td>$60,000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>IT</td>
+                            <td>Developer</td>
+                            <td>$75,000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mike Johnson</td>
+                            <td>Finance</td>
+                            <td>Analyst</td>
+                            <td>$50,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

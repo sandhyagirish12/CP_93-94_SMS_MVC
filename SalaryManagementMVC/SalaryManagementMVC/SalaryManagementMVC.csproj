@@ -131,6 +131,7 @@
     <Content Include="Views\Employee\ResetPassword.cshtml" />
     <Content Include="Views\Admin\VerifyEmail.cshtml" />
     <Content Include="Views\Admin\ResetPassword.cshtml" />
+    <Content Include="Views\Admin\ViewEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

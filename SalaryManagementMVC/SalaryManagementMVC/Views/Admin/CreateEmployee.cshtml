@@ -8,11 +8,12 @@
     <!-- Nav Tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="create-tab" data-toggle="tab" href="CreateEmployee.aspx" role="tab" aria-controls="create" aria-selected="true">Create Account</a>
+            @Html.ActionLink("Create Employee", "CreateEmployee", "Admin", null, new { @class = "nav-link active", id = "create-tab", role = "tab", aria_controls = "create", aria_selected = "true" })
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="view-tab" data-toggle="tab" href="ViewEmployee.aspx" role="tab" aria-controls="view" aria-selected="false">View Employees</a>
+            @Html.ActionLink("View Employees", "ViewEmployee", "Admin", null, new { @class = "nav-link", id = "view-tab", role = "tab", aria_controls = "view", aria_selected = "false" })
         </li>
+
     </ul>
 
     <!-- Tab Content -->

@@ -39,6 +39,11 @@ namespace SalaryManagementMVC.Controllers
             return View("CreateEmployee");
         }
 
+        public ActionResult ViewEmployee()
+        {
+            return View("ViewEmployee");
+        }
+
         public ActionResult ManagePayroll()
         {
             return View("Payroll");
