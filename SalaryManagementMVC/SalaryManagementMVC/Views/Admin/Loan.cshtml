@@ -3,3 +3,47 @@
     ViewBag.Title = "Loan";
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
+
+<div class="container mt-5">
+    <!-- Table for displaying loan details -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Loan Number</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dummy Data -->
+            <tr>
+                <td>101</td>
+                <td>L-001</td>
+                <td>Home Loan</td>
+                <td>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-danger">Deny</button>
+                </td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>L-002</td>
+                <td>Car Loan</td>
+                <td>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-danger">Deny</button>
+                </td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>L-003</td>
+                <td>Personal Loan</td>
+                <td>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-danger">Deny</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
