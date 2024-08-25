@@ -43,5 +43,10 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Leave");
         }
+
+        public ActionResult Logout()
+        {
+            return View("Home");
+        }
     }
 }
