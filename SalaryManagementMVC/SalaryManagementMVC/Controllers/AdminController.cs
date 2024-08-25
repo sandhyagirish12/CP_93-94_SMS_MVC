@@ -64,14 +64,19 @@ namespace SalaryManagementMVC.Controllers
             return View("Deduction");
         }
 
-        public ActionResult ManageDepartment()
-        {
-            return View("Department");
-        }
+        //public ActionResult ManageDepartment()
+        //{
+        //    return View("Department");
+        //}
 
-        public ActionResult ManageAllowance()
+        //public ActionResult ManageAllowance()
+        //{
+        //    return View("Allowance");
+        //}
+
+        public ActionResult Logout()
         {
-            return View("Allowance");
+            return View("Home");
         }
     }
 }
