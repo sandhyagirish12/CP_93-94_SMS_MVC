@@ -4,5 +4,52 @@
     Layout = "~/Views/shared/_EmployeeMaster.cshtml";
 }
 
-<h2>Leave</h2>
+<div class="container mt-3">
+    <h3>Leave Request</h3>
+    <form>
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="leaveType">
+                        <option value="">Select leave type</option>
+                        <option value="sick">Sick Leave</option>
+                        <option value="vacation">Vacation Leave</option>
+                        <option value="personal">Personal Leave</option>
+                        <option value="maternity">Maternity Leave</option>
+                    </select>
+                    <label for="leaveType">Leave Type</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="fromDate">
+                    <label for="fromDate">From Date</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="toDate">
+                    <label for="toDate">To Date</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="description" rows="3" placeholder="Enter leave description"></textarea>
+                    <label for="description">Description</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+    </form>
+</div>
 
