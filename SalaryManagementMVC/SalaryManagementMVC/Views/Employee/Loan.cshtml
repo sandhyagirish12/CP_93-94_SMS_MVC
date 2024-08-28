@@ -4,76 +4,89 @@
     Layout = "~/Views/shared/_EmployeeMaster.cshtml";
 }
 
-<div class="container mt-5">
-    <h2>Loan Request Form</h2>
+<div class="container mt-3">
+    <h3>Loan Request</h3>
     <form>
-        <!-- Loan Details Section -->
-        <fieldset class="border p-3">
-            <legend class="w-auto">Loan Details</legend>
-            <div class="form-group">
-                <label for="loanNumber">Loan Number</label>
-                <input type="text" class="form-control" id="loanNumber" placeholder="Enter loan number">
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="loanNumber" placeholder="Loan Number">
+                    <label for="loanNumber">Loan Number</label>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="loanType">Loan Type</label>
-                <select class="form-control" id="loanType">
-                    <option value="">Select loan type</option>
-                    <option value="personal">Personal Loan</option>
-                    <option value="home">Home Loan</option>
-                    <option value="education">Education Loan</option>
-                    <option value="car">Car Loan</option>
-                </select>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="loanType">
+                        <option value="">Select loan type</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="home">Home Loan</option>
+                        <option value="education">Education Loan</option>
+                        <option value="car">Car Loan</option>
+                    </select>
+                    <label for="loanType">Loan Type</label>
+                </div>
             </div>
-        </fieldset>
+        </div>
 
-        <!-- Bank Details Section -->
-        <fieldset class="border p-3 mt-4">
-            <legend class="w-auto">Bank Details</legend>
-            <div class="form-group">
-                <label for="bankName">Bank Name</label>
-                <input type="text" class="form-control" id="bankName" placeholder="Enter bank name">
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name">
+                    <label for="bankName">Bank Name</label>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="ifscCode">IFSC Code</label>
-                <input type="text" class="form-control" id="ifscCode" placeholder="Enter IFSC code">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="ifscCode" placeholder="IFSC Code">
+                    <label for="ifscCode">IFSC Code</label>
+                </div>
             </div>
-        </fieldset>
+        </div>
 
-        <!-- Payment Details Section -->
-        <fieldset class="border p-3 mt-4">
-            <legend class="w-auto">Payment Details</legend>
-            <div class="form-group">
-                <label for="totalAmount">Total Amount</label>
-                <input type="number" class="form-control" id="totalAmount" placeholder="Enter total loan amount">
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="totalAmount" placeholder="Total Amount">
+                    <label for="totalAmount">Total Amount</label>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="monthlyPayment">Monthly Payment</label>
-                <input type="number" class="form-control" id="monthlyPayment" placeholder="Enter monthly payment">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="monthlyPayment" placeholder="Monthly Payment">
+                    <label for="monthlyPayment">Monthly Payment</label>
+                </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="startingDate">Starting Date</label>
-                <input type="date" class="form-control" id="startingDate">
+        <!-- Row 4 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="startingDate">
+                    <label for="startingDate">Starting Date</label>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="tenure">Tenure (in months)</label>
-                <input type="number" class="form-control" id="tenure" placeholder="Enter tenure in months">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="tenure" placeholder="Tenure (in months)">
+                    <label for="tenure">Tenure (in months)</label>
+                </div>
             </div>
-        </fieldset>
+        </div>
 
-        <!-- Description Section -->
-        <fieldset class="border p-3 mt-4">
-            <legend class="w-auto">Description</legend>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" rows="3" placeholder="Enter loan description"></textarea>
+        <!-- Row 5 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="description" rows="3" placeholder="Enter loan description"></textarea>
+                    <label for="description">Description</label>
+                </div>
             </div>
-        </fieldset>
+        </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Submit Loan Request</button>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
     </form>
 </div>
