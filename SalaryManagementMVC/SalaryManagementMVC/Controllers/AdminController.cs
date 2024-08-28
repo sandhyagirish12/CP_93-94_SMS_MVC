@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryManagementMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,19 @@ namespace SalaryManagementMVC.Controllers
         public ActionResult Register()
         {
             return View("Registration");
+        }
+
+        public ActionResult AdminRegister(FormCollection form, string action)
+        {
+            AdminModel model = new AdminModel();
+            string Fname = form["txtFname"];
+            string Lname = form["txtLname"];
+            string Username = form["txtUname"];
+            string Email = form["txtEmail"];
+            string Password = form["txtPass"];
+            model.AdminRegister(Fname, Lname, Username, Email, Password);
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult VerifyEmail()
