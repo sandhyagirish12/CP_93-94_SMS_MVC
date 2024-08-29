@@ -28,7 +28,13 @@ namespace SalaryManagementMVC.Controllers
             string Username = form["txtUname"];
             string Email = form["txtEmail"];
             string Password = form["txtPass"];
-            model.AdminRegister(Fname, Lname, Username, Email, Password);
+            bool isRegistered = model.AdminRegister(Fname, Lname, Username, Email, Password);
+           
+            if (!isRegistered)
+            {
+                ViewBag.ErrorMessage = "The maximum number of 5 admins has been reached. Cannot register more admins.";
+                return View();
+            }
 
             return RedirectToAction("Index");
         }
