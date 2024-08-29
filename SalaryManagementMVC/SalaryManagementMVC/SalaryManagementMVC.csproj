@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\payroll.css" />
     <Content Include="Content\css\user.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\img\ay.png" />

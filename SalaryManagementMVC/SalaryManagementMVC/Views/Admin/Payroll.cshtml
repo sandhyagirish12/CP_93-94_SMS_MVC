@@ -1,8 +1,132 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Payroll";
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Generate Salary</h2>
 
-<h2>Payroll</h2>
+    <!-- Employee ID, Designation, Month, Year -->
+    <div class="salary-section">
+        <div class="form-row">
+            <div class="col-md-3">
+                <label for="employeeId" class="label-text">Employee ID:</label>
+                <select id="employeeId" class="form-control">
+                    <option selected>EMP12345</option>
+                    <option>EMP67890</option>
+                    <option>EMP11223</option>
+                    <option>EMP44556</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="designation" class="label-text">Designation:</label>
+                <select id="designation" class="form-control">
+                    <option selected>D1</option>
+                    <option>D2</option>
+                    <option>D3</option>
+                    <option>D4</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="month" class="label-text">Month:</label>
+                <select id="month" class="form-control">
+                    <option selected>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="year" class="label-text">Year:</label>
+                <select id="year" class="form-control">
+                    <option selected>2024</option>
+                    <option>2023</option>
+                    <option>2022</option>
+                    <option>2021</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Name, Account Number -->
+    <div class="salary-summary">
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="employeeName" class="label-text">Name:</label>
+                <p id="employeeName">John Doe</p>
+            </div>
+            <div class="col-md-6">
+                <label for="accNumber" class="label-text">Acc No:</label>
+                <p id="accNumber">123456789012</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salary Details -->
+    <div class="salary-section">
+        <div class="form-row">
+            <div class="col-md-4">
+                <label class="label-text">Basic Pay:</label>
+                <p>₹50,000</p>
+            </div>
+            <div class="col-md-4">
+                <label class="label-text">Increment:</label>
+                <p>₹5,000</p>
+            </div>
+            <div class="col-md-4">
+                <label class="label-text">Salary:</label>
+                <p>₹55,000</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Allowances and Deductions -->
+    <div class="salary-section">
+        <div class="form-row">
+            <div class="col-md-6">
+                <label class="label-text">Travel Allowance:</label>
+                <p>₹1,000</p>
+            </div>
+            <div class="col-md-6">
+                <label class="label-text">Medical Allowance:</label>
+                <p>₹1,000</p>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label class="label-text">HRA:</label>
+                <p>2% - ₹1,000</p>
+            </div>
+            <div class="col-md-6">
+                <label class="label-text">DA:</label>
+                <p>5% - ₹2,500</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leave Details -->
+    <div class="salary-section">
+        <div class="form-row">
+            <div class="col-md-4">
+                <label class="label-text">Total Leave:</label>
+                <p>0</p>
+            </div>
+            <div class="col-md-4">
+                <label class="label-text">Approved Leave:</label>
+                <p>0</p>
+            </div>
+            <div class="col-md-4">
+                <label class="label-text">Leave Deduction:</label>
+                <p>₹0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generate Salary Button -->
+    <div class="form-row">
+        <div class="col text-right">
+            <button type="submit" class="btn btn-custom">Generate Salary</button>
+        </div>
+    </div>
+</div>
+
 
