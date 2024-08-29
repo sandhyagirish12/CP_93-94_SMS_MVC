@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace SalaryManagementMVC.Models
@@ -11,6 +13,7 @@ namespace SalaryManagementMVC.Models
     {
         public void AdminRegister(string fname, string lname, string uname, string email, string pass)
         {
+            string hashedPassword = HashPassword(pass);
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -21,10 +24,24 @@ namespace SalaryManagementMVC.Models
                 command.Parameters.AddWithValue("@lname", lname);
                 command.Parameters.AddWithValue("@username", uname);
                 command.Parameters.AddWithValue("@email", email);
-                command.Parameters.AddWithValue("@password", pass);
+                command.Parameters.AddWithValue("@password", hashedPassword);
                 command.ExecuteNonQuery();
                 return;
             }
         }
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                // Compute the hash as a byte array
+                var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                // Convert the hash to a Base64 string and return it
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
     }
 }
+
+
+   
