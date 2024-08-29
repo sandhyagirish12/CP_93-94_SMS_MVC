@@ -11,7 +11,7 @@ namespace SalaryManagementMVC.Models
 {
     public class AdminModel
     {
-        public void AdminRegister(string fname, string lname, string uname, string email, string pass)
+        public bool AdminRegister(string fname, string lname, string uname, string email, string pass)
         {
             string hashedPassword = HashPassword(pass);
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -19,6 +19,15 @@ namespace SalaryManagementMVC.Models
             {
 
                 connection.Open();
+                //check admin count greater than 5 or not
+                string countQuery = "SELECT COUNT(*) FROM AdminData";
+                SqlCommand cmd = new SqlCommand(countQuery, connection);
+                int adminCount = (int)cmd.ExecuteScalar();
+
+                if (adminCount >= 5)
+                {
+                    return false;
+                }
 
                 string insertQuery = "INSERT INTO AdminData(Fname, Lname, Username, Password, Email) VALUES(@fname, @lname, @username, @password, @email)";
                 SqlCommand command = new SqlCommand(insertQuery, connection);
@@ -28,7 +37,7 @@ namespace SalaryManagementMVC.Models
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@password", hashedPassword);
                 command.ExecuteNonQuery();
-                return;
+                return true;
             }
         }
         private string HashPassword(string password)
