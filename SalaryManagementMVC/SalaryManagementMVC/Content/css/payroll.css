@@ -1,1 +1,38 @@
-﻿
+﻿.container {
+    max-width: 800px;
+}
+
+.salary-section, .salary-summary {
+    background-color: #ffffff;
+    padding: 16px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.label-text {
+    font-weight: bold;
+}
+
+.form-row {
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+    .form-row p {
+        margin: 0;
+        padding: 8px 8px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+    }
+
+.btn.btn-custom {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    margin: 12px 0px;
+}
+
+    .btn.btn-custom:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
