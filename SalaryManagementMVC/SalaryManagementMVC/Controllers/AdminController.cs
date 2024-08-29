@@ -33,10 +33,10 @@ namespace SalaryManagementMVC.Controllers
             if (!isRegistered)
             {
                 ViewBag.ErrorMessage = "The maximum number of 5 admins has been reached. Cannot register more admins.";
-                return View();
+                return View("Registration");
             }
-
-            return RedirectToAction("Index");
+            ViewBag.ErrorMessage = "Successfully Registered";
+            return RedirectToAction("Register");
         }
 
         public ActionResult VerifyEmail()
