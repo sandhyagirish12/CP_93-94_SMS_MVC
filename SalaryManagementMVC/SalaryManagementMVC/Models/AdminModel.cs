@@ -17,7 +17,9 @@ namespace SalaryManagementMVC.Models
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+
                 connection.Open();
+
                 string insertQuery = "INSERT INTO AdminData(Fname, Lname, Username, Password, Email) VALUES(@fname, @lname, @username, @password, @email)";
                 SqlCommand command = new SqlCommand(insertQuery, connection);
                 command.Parameters.AddWithValue("@fname", fname);
