@@ -51,6 +51,8 @@ namespace SalaryManagementMVC.Models
                 return Convert.ToBase64String(hashBytes);
             }
         }
+
+       
     }
 }
 
