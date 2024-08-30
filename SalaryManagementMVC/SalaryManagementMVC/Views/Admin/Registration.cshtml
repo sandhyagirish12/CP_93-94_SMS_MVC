@@ -3,11 +3,11 @@
     Layout = "~/Views/shared/_AdminHome.cshtml";
     //ViewBag.Title = "Registration";
 }
-@if (ViewBag.ErrorMessage != null)
+@if (ViewBag.Message != null)
 {
     <script type="text/javascript">
         window.onload = function() {
-            alert('@ViewBag.ErrorMessage');
+            alert('@ViewBag.Message');
         };
     </script>
 }
