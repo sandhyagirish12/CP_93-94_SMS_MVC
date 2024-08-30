@@ -15,12 +15,13 @@ namespace SalaryManagementMVC.Controllers
             return View("Home");
 
         }
-        public ActionResult AdminLogin(FormCollection form, string action)
+        public ActionResult AdminLogin(FormCollection form)
         {
            AdminModel model = new AdminModel();
             string username = form["uname"];
             string password = form["password"];
             model.AdminLogin(username, password);
+            return View("Dashboard");
 
         }
         public ActionResult Register()

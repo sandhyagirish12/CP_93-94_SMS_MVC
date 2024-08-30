@@ -52,7 +52,18 @@ namespace SalaryManagementMVC.Models
             }
         }
 
-       
+       public void AdminLogin(string username, string password)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string hashedPassword = HashPassword(password);
+                string LoginQuery = "SELECT Username, Password FROM AdminData WHERE Username = 'username' AND Password = 'HashPassword' ";
+                SqlCommand command = new SqlCommand(LoginQuery, connection);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
 
