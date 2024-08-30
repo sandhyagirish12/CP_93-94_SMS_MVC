@@ -23,7 +23,6 @@ namespace SalaryManagementMVC.Controllers
             model.AdminLogin(username, password);
             return View("Dashboard");
 
-        }
         public ActionResult Register()
         {
             return View("Registration");
