@@ -1,7 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "Home";
+    //ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_AdminHome.cshtml";
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function() {
+            alert('@ViewBag.Message');
+        };
+    </script>
 }
 <div class="login-container d-flex justify-content-center align-items-center min-vh-100">
     <main class="form-signin w-100" style="max-width: 400px;">
@@ -16,7 +24,7 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
                 <label for="floatingPassword">Password</label>
             </div>
-           @* @Html.ActionLink("Login", "Dashboard", null, new { @class = "btn btn-primary w-100 py-2" })*@
+            @* @Html.ActionLink("Login", "Dashboard", null, new { @class = "btn btn-primary w-100 py-2" })*@
             <button class="btn btn-primary w-100 py-2" type="submit" name="action">Login</button>
 
             <div class="mt-3 text-center">

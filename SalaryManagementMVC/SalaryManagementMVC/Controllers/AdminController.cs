@@ -17,12 +17,21 @@ namespace SalaryManagementMVC.Controllers
         }
         public ActionResult AdminLogin(FormCollection form)
         {
-           AdminModel model = new AdminModel();
+            AdminModel model = new AdminModel();
             string username = form["uname"];
             string password = form["password"];
-            model.AdminLogin(username, password);
-            return View("Dashboard");
-
+            bool loginstatus = model.AdminLogin(username, password);
+            if (loginstatus)
+            {
+                return View("Dashboard");
+            }
+            else
+            {
+                ViewBag.Message = "Invalid username or password. Please try again.";
+                return View("Home");
+            }
+        }
+        
         public ActionResult Register()
         {
             return View("Registration");
