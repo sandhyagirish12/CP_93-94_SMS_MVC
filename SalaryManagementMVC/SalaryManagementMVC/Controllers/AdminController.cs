@@ -21,22 +21,29 @@ namespace SalaryManagementMVC.Controllers
         }
 
         public ActionResult AdminRegister(FormCollection form, string action)
+        {
+            if (action == "submit")
             {
-            AdminModel model = new AdminModel();
-            string Fname = form["txtFname"];
-            string Lname = form["txtLname"];
-            string Username = form["txtUname"];
-            string Email = form["txtEmail"];
-            string Password = form["txtPass"];
-            bool isRegistered = model.AdminRegister(Fname, Lname, Username, Email, Password);
-           
-            if (!isRegistered)
-            {
-                ViewBag.Message = "The maximum number of 5 admins has been reached. Cannot register more admins.";
+                AdminModel model = new AdminModel();
+                string Fname = form["txtFname"];
+                string Lname = form["txtLname"];
+                string Username = form["txtUname"];
+                string Email = form["txtEmail"];
+                string Password = form["txtPass"];
+                bool isRegistered = model.AdminRegister(Fname, Lname, Username, Email, Password);
+
+                if (!isRegistered)
+                {
+                    ViewBag.Message = "The maximum number of 5 admins has been reached. Cannot register more admins.";
+                    return View("Registration");
+                }
+                ViewBag.Message = "Successfully Registered";
                 return View("Registration");
             }
-            ViewBag.Message = "Successfully Registered";
-            return View("Registration");
+            else
+            {
+                return View("Registration");
+            }
         }
 
         public ActionResult VerifyEmail()
