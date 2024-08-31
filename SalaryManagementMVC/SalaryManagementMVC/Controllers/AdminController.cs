@@ -80,7 +80,7 @@ namespace SalaryManagementMVC.Controllers
             string username = Session["Username"] as string;
 
             // Use the username as needed in your controller logic
-           // ViewBag.Username = username;
+            ViewBag.Username = username;
             return View("Dashboard");
         }
 
