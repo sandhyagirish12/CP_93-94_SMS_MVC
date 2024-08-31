@@ -23,6 +23,7 @@ namespace SalaryManagementMVC.Controllers
             bool loginstatus = model.AdminLogin(username, password);
             if (loginstatus)
             {
+                Session["Username"] = username;
                 return View("Dashboard");
             }
             else
@@ -75,6 +76,11 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult Dashboard()
         {
+            // Retrieve the username from session
+            string username = Session["Username"] as string;
+
+            // Use the username as needed in your controller logic
+           // ViewBag.Username = username;
             return View("Dashboard");
         }
 
@@ -120,6 +126,7 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             return View("Home");
         }
     }
