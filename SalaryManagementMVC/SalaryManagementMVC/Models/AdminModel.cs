@@ -74,6 +74,28 @@ namespace SalaryManagementMVC.Models
                 }
             }
         }
+
+        public bool EmailExists(string email)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string existQuery = "SELECT Email FROM AdminData WHERE Email = @email";
+                SqlCommand command=new SqlCommand(existQuery, connection);
+                command.Parameters.AddWithValue("@email", email);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
 
