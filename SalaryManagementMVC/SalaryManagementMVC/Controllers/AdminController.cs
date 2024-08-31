@@ -64,8 +64,11 @@ namespace SalaryManagementMVC.Controllers
             }
         }
 
-        public ActionResult VerifyEmail()
+        public ActionResult VerifyEmail( FormCollection frm)
         {
+            string Email = frm["Email"];
+            AdminModel model = new AdminModel();
+            bool status = model.EmailExists(Email);
             return View("VerifyEmail");
         }
 
@@ -84,6 +87,7 @@ namespace SalaryManagementMVC.Controllers
             return View("Dashboard");
         }
 
+        
         public ActionResult CreateEmployee()
         {
             return View("CreateEmployee");
