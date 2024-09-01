@@ -137,6 +137,11 @@ namespace SalaryManagementMVC.Controllers
             return View("CreateEmployee");
         }
 
+        public ActionResult RegisterEmployee(FormCollection frm)
+        {
+            
+            return View("");
+        }
         public ActionResult ViewEmployee()
         {
             return View("ViewEmployee");
