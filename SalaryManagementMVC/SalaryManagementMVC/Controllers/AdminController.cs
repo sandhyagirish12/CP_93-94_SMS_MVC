@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,12 +65,55 @@ namespace SalaryManagementMVC.Controllers
             }
         }
 
+        public ActionResult ConfirmEmail()
+        {
+            return View("VerifyEmail");
+        }
+
         public ActionResult VerifyEmail( FormCollection frm)
         {
             string Email = frm["Email"];
             AdminModel model = new AdminModel();
             bool status = model.EmailExists(Email);
-            return View("VerifyEmail");
+
+            if(status)
+            {
+                Random random = new Random();
+                int otp = random.Next(1000,9999);
+                Session["otp"] = otp;
+                Session["email"] = Email;
+                SendToEmail(otp, Email);
+                return View("ResetPassword");
+            }
+            return View("Home");
+        }
+ 
+        public void SendToEmail(int otp, string Email)
+        {
+                        
+                MailMessage message = new MailMessage();
+                message.To.Add(Email);
+                message.From = new MailAddress("salarymanagementmvc@gmail.com");
+                message.Subject = "Reset OTP";
+                message.Body = $"Your OTP is: {otp}";
+                message.IsBodyHtml = true; // This allows the email body to be formatted as HTML
+                
+              
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
+                smtp.Credentials = new System.Net.NetworkCredential("salarymanagementmvc@gmail.com", "Mvc$project!452$01$!!");
+                smtp.EnableSsl = true;
+
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    // Log or handle the error as needed
+                    throw new InvalidOperationException("Failed to send email.", ex);
+                }
+            
+
         }
 
         public ActionResult ResetPassword()
