@@ -21,30 +21,30 @@
         <!-- Create Account Form -->
         <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="create-tab">
             <div class="form-container mt-3">
-                <form>
+                <form method="post" action="@Url.Action("CreateEmployee")">
                     <!-- Row 1 -->
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" required>
                                 <label for="firstName">First Name</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" required>
                                 <label for="lastName">Last Name</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="employeeId" placeholder="Employee ID">
+                                <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" name="eid" required>
                                 <label for="employeeId">Employee ID</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -54,19 +54,19 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                                 <label for="password">Password</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="dob" placeholder="Date of Birth">
+                                <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
                                 <label for="dob">DOB</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="age" placeholder="Age">
+                                <input type="number" class="form-control" id="age" placeholder="Age" name="age" required>
                                 <label for="age">Age</label>
                             </div>
                         </div>
@@ -87,25 +87,25 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth">
+                                <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" name="pob" required>
                                 <label for="placeOfBirth">Place of Birth</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group">
+                                <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group" name="bloodgroup" required>
                                 <label for="bloodGroup">Blood Group</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="fathersName" placeholder="Father's Name">
+                                <input type="text" class="form-control" id="fathersName" placeholder="Father's Name" name="fathername" required>
                                 <label for="fathersName">Father's Name</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name">
+                                <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername" required>
                                 <label for="mothersName">Mother's Name</label>
                             </div>
                         </div>
@@ -115,25 +115,25 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name">
+                                <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name" name="sname" required>
                                 <label for="spouseName">Spouse Name</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="department" placeholder="Department">
+                                <input type="text" class="form-control" id="department" placeholder="Department" name="dept" required>
                                 <label for="department">Department</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="designation" placeholder="Designation">
+                                <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" required>
                                 <label for="designation">Designation</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date">
+                                <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date" name="jdate" required>
                                 <label for="joiningDate">Joining Date</label>
                             </div>
                         </div>
@@ -143,25 +143,25 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay">
+                                <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay" name="bpay" required>
                                 <label for="basicPay">Basic Pay</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay">
+                                <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay" name="gpay" required>
                                 <label for="gradePay">Grade Pay</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="hra" placeholder="HRA">
+                                <input type="number" class="form-control" id="hra" placeholder="HRA" name="hra" required>
                                 <label for="hra">HRA</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="increment" placeholder="Increment">
+                                <input type="number" class="form-control" id="increment" placeholder="Increment" name="inc" required>
                                 <label for="increment">Increment</label>
                             </div>
                         </div>
@@ -171,25 +171,25 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="da" placeholder="DA">
+                                <input type="number" class="form-control" id="da" placeholder="DA" name="da" required>
                                 <label for="da">DA</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="accountNo" placeholder="Account No">
+                                <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno" required>
                                 <label for="accountNo">Account No</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="ifsc" placeholder="IFSC">
+                                <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" required>
                                 <label for="ifsc">IFSC</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="bankName" placeholder="Bank Name">
+                                <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankname" required>
                                 <label for="bankName">Bank Name</label>
                             </div>
                         </div>
@@ -199,25 +199,25 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address">
+                                <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress" required>
                                 <label for="permanentAddress">Permanent Address</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="currentAddress" placeholder="Current Address">
+                                <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" name="caddress" required>
                                 <label for="currentAddress">Current Address</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="contactNumber" placeholder="Contact Number">
+                                <input type="tel" class="form-control" id="contactNumber" placeholder="Contact Number" name="cnumber" required>
                                 <label for="contactNumber">Contact Number</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="remarks" placeholder="Remarks" rows="3"></textarea>
+                                <textarea class="form-control" id="remarks" placeholder="Remarks" name="remarks" required rows="3"></textarea>
                                 <label for="remarks">Remarks</label>
                             </div>
                         </div>
