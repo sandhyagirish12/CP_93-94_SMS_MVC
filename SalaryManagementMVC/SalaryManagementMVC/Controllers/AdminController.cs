@@ -139,8 +139,37 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult RegisterEmployee(FormCollection frm)
         {
-            
+            string fname = frm["fname"];
+            string lname = frm["lname"];
+            string eid = frm["eid"];
+            string email = frm["email"];
+            string password = frm["password"];
+            string dob = frm["dob"];
+            int age = frm["age"];
+            string gender = frm["gender"];
+            string dob = frm["dob"];
+            string bloodgroup = frm["bloodgroup"];
+            string fathername = frm["fathername"];
+            string mothername = frm["mothername"];
+            string sname = frm["sname"];
+            string dept = frm["dept"];
+            string jdate = frm["jdate"];
+            string designation = frm["designation"];
+            decimal bpay = frm["bpay"];
+            decimal gpay = frm["gpay"];
+            decimal hra = frm["hra"];
+            decimal inc = frm["inc"];
+            decimal da = frm["da"];
+            string ifsc = frm["ifsc"];
+            string bankname = frm["bankname"];
+            string paddress = frm["paddress"];
+            string caadress = frm["caddress"];
+            int cnumber = frm["cnumber"];
+            string remarks = frm["remarks"];
+           
+           
             return View("");
+            
         }
         public ActionResult ViewEmployee()
         {
