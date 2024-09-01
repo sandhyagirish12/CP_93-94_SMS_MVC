@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryManagementMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,25 @@ namespace SalaryManagementMVC.Controllers
         public ActionResult Index()
         {
             return View("Home");
+        }
+
+        public ActionResult EmployeeLogin(FormCollection frm)
+        {
+
+            EmployeeModel model = new EmployeeModel();
+            string username = frm["uname"];
+            string password = frm["password"];
+            bool loginstatus = model.EmployeeLogin(username, password);
+            if (loginstatus)
+            {
+                Session["Username"] = username;
+                return View("Dashboard");
+            }
+            else
+            {
+                ViewBag.Message = "Invalid username or password. Please try again.";
+                return View("Home");
+            }
         }
 
         public ActionResult VerifyEmail()
