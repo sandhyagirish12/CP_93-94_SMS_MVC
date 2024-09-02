@@ -153,56 +153,25 @@ namespace SalaryManagementMVC.Controllers
             string mothername = frm["mothername"];
             string sname = frm["sname"];
             string dept = frm["dept"];
-            string jdate = frm["jdate"];
             string designation = frm["designation"];
+            string jdate = frm["jdate"];
             decimal bpay = Convert.ToDecimal(frm["bpay"]);
             decimal gpay = Convert.ToDecimal(frm["gpay"]);
             decimal hra = Convert.ToDecimal(frm["hra"]);
             decimal inc =Convert.ToDecimal(frm["inc"]);
             decimal da =Convert.ToDecimal(frm["da"]);
+            string accountno = frm["accountno"];
             string ifsc = frm["ifsc"];
             string bankname = frm["bankname"];
             string paddress = frm["paddress"];
-            string caadress = frm["caddress"];
-            int cnumber =Convert.ToInt32(frm["cnumber"]);
+            string caddress = frm["caddress"];
+            string cnumber = frm["cnumber"];
             string remarks = frm["remarks"];
-           
            
             return View("");
             
         }
 
-        public class EmployeeRegistration
-        {
-            public string Fname { get; set; }
-            public string Lname { get; set; }
-            public string Eid { get; set; }
-            public string Email { get; set; }
-            public string Password { get; set; }
-            public string Dob { get; set; }
-            public int Age { get; set; }
-            public string Gender { get; set; }
-            public string Pob { get; set; }
-            public string Bloodgroup { get; set; }
-            public string Fathername { get; set; }
-            public string Mothername { get; set; }
-            public string Sname { get; set; }
-            public string Dept { get; set; }
-            public string Jdate { get; set; }
-            public string Designation { get; set; }
-            public decimal Bpay { get; set; }
-            public decimal Gpay { get; set; }
-            public decimal Hra { get; set; }
-            public decimal Inc { get; set; }
-            public decimal Da { get; set; }
-            public string Ifsc { get; set; }
-            public string Bankname { get; set; }
-            public string Paddress { get; set; }
-            public string Caddress { get; set; }
-            public int Cnumber { get; set; }
-            public string Remarks { get; set; }
-            public List<string> Skills { get; set; } // Optional: Use an array if you prefer
-        }
         public ActionResult ViewEmployee()
         {
             return View("ViewEmployee");
