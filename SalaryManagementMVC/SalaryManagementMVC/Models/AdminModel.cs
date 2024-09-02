@@ -127,6 +127,51 @@ namespace SalaryManagementMVC.Models
             string caddress = employeeData[25];
             string cnumber = employeeData[26];
             string remarks = employeeData[27];
+
+            string hashedPassword = HashPassword(password);
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertQuery = @"INSERT INTO EmployeeData VALUES 
+                        (@eid, @uname, @fname, @lname, @email, @pass, @gender, @dob, @age,
+                        @pob, @bloodgroup, @fathername, @mothername, @sname, @jdate, @dept, @designation, 
+                        @bpay, @gpay, @hra, @inc, @da, @accountno, @ifsc, @bankname, 
+                        @paddress, @caddress, @cnumber, @remarks)";
+                SqlCommand command = new SqlCommand(insertQuery, connection);
+                command.Parameters.AddWithValue("@eid", eid);
+                //command.Parameters.AddWithValue("@uname", uname);
+                command.Parameters.AddWithValue("@fname", fname);
+                command.Parameters.AddWithValue("@lname", lname);
+                command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@pass", hashedPassword);
+                command.Parameters.AddWithValue("@gender", gender);
+                command.Parameters.AddWithValue("@dob", dob);
+                command.Parameters.AddWithValue("@age", age);
+                command.Parameters.AddWithValue("@pob", pob);
+                command.Parameters.AddWithValue("@bloodgroup", bloodgroup);
+                command.Parameters.AddWithValue("@fathername", fathername);
+                command.Parameters.AddWithValue("@mothername", mothername);
+                command.Parameters.AddWithValue("@sname", sname);
+                command.Parameters.AddWithValue("@jdate", jdate);
+                command.Parameters.AddWithValue("@dept", dept);
+                command.Parameters.AddWithValue("@designation", designation);
+                command.Parameters.AddWithValue("@bpay", bpay);
+                command.Parameters.AddWithValue("@gpay", gpay);
+                command.Parameters.AddWithValue("@hra", hra);
+                command.Parameters.AddWithValue("@inc", inc);
+                command.Parameters.AddWithValue("@da", da);
+                command.Parameters.AddWithValue("@accountno", accountno);
+                command.Parameters.AddWithValue("@ifsc", ifsc);
+                command.Parameters.AddWithValue("@bankname", bankname);
+                command.Parameters.AddWithValue("@paddress", paddress);
+                command.Parameters.AddWithValue("@caddress", caddress);
+                command.Parameters.AddWithValue("@cnumber", cnumber);
+                command.Parameters.AddWithValue("@remarks", remarks);
+
+                command.ExecuteNonQuery();
+            }
         } 
     }
 }
