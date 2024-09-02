@@ -33,7 +33,7 @@ namespace SalaryManagementMVC.Controllers
                 return View("Home");
             }
         }
-        
+
         public ActionResult Register()
         {
             return View("Registration");
@@ -70,16 +70,16 @@ namespace SalaryManagementMVC.Controllers
             return View("VerifyEmail");
         }
 
-        public ActionResult VerifyEmail( FormCollection frm)
+        public ActionResult VerifyEmail(FormCollection frm)
         {
             string Email = frm["Email"];
             AdminModel model = new AdminModel();
             bool status = model.EmailExists(Email);
 
-            if(status)
+            if (status)
             {
                 Random random = new Random();
-                int otp = random.Next(1000,9999);
+                int otp = random.Next(1000, 9999);
                 Session["otp"] = otp;
                 Session["email"] = Email;
                 SendToEmail(otp, Email);
@@ -87,32 +87,32 @@ namespace SalaryManagementMVC.Controllers
             }
             return View("Home");
         }
- 
+
         public void SendToEmail(int otp, string Email)
         {
-                        
-                MailMessage message = new MailMessage();
-                message.To.Add(Email);
-                message.From = new MailAddress("salarymanagementmvc@gmail.com");
-                message.Subject = "Reset OTP";
-                message.Body = $"Your OTP is: {otp}";
-                message.IsBodyHtml = true; // This allows the email body to be formatted as HTML
-                
-              
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
-                smtp.Credentials = new System.Net.NetworkCredential("salarymanagementmvc@gmail.com", "Mvc$project!452$01$!!");
-                smtp.EnableSsl = true;
 
-                try
-                {
-                    smtp.Send(message);
-                }
-                catch (Exception ex)
-                {
-                    // Log or handle the error as needed
-                    throw new InvalidOperationException("Failed to send email.", ex);
-                }
-            
+            MailMessage message = new MailMessage();
+            message.To.Add(Email);
+            message.From = new MailAddress("salarymanagementmvc@gmail.com");
+            message.Subject = "Reset OTP";
+            message.Body = $"Your OTP is: {otp}";
+            message.IsBodyHtml = true; // This allows the email body to be formatted as HTML
+
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
+            smtp.Credentials = new System.Net.NetworkCredential("salarymanagementmvc@gmail.com", "Mvc$project!452$01$!!");
+            smtp.EnableSsl = true;
+
+            try
+            {
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the error as needed
+                throw new InvalidOperationException("Failed to send email.", ex);
+            }
+
 
         }
 
@@ -131,7 +131,7 @@ namespace SalaryManagementMVC.Controllers
             return View("Dashboard");
         }
 
-        
+
         public ActionResult CreateEmployee()
         {
             return View("CreateEmployee");
@@ -139,37 +139,45 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult RegisterEmployee(FormCollection frm)
         {
-            string fname = frm["fname"];
-            string lname = frm["lname"];
-            string eid = frm["eid"];
-            string email = frm["email"];
-            string password = frm["password"];
-            string dob = frm["dob"];
-            int age = Convert.ToInt32(frm["age"]);
-            string gender = frm["gender"];
-            string pob = frm["pob"];
-            string bloodgroup = frm["bloodgroup"];
-            string fathername = frm["fathername"];
-            string mothername = frm["mothername"];
-            string sname = frm["sname"];
-            string dept = frm["dept"];
-            string designation = frm["designation"];
-            string jdate = frm["jdate"];
-            decimal bpay = Convert.ToDecimal(frm["bpay"]);
-            decimal gpay = Convert.ToDecimal(frm["gpay"]);
-            decimal hra = Convert.ToDecimal(frm["hra"]);
-            decimal inc =Convert.ToDecimal(frm["inc"]);
-            decimal da =Convert.ToDecimal(frm["da"]);
-            string accountno = frm["accountno"];
-            string ifsc = frm["ifsc"];
-            string bankname = frm["bankname"];
-            string paddress = frm["paddress"];
-            string caddress = frm["caddress"];
-            string cnumber = frm["cnumber"];
-            string remarks = frm["remarks"];
-           
+            var employeeData = new List<string>
+            {
+                frm["fname"],
+                frm["lname"],
+                frm["eid"],
+                frm["email"],
+                frm["password"],
+                frm["dob"],
+                frm["age"],  
+                frm["gender"],
+                frm["pob"],
+                frm["bloodgroup"],
+                frm["fathername"],
+                frm["mothername"],
+                frm["sname"],
+                frm["dept"],
+                frm["designation"],
+                frm["jdate"],
+                frm["bpay"],  
+                frm["gpay"],  
+                frm["hra"],   
+                frm["inc"],   
+                frm["da"],    
+                frm["accountno"],
+                frm["ifsc"],
+                frm["bankname"],
+                frm["paddress"],
+                frm["caddress"],
+                frm["cnumber"],
+                frm["remarks"]
+            };
+
+            // Create an instance of the model class
+            EmployeeModel model = new EmployeeModel();
+
+            // Pass the list to the model class method
+            model.RegisterEmployee(employeeData);
+
             return View("");
-            
         }
 
         public ActionResult ViewEmployee()
