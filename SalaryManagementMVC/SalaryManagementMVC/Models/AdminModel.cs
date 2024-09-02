@@ -96,6 +96,38 @@ namespace SalaryManagementMVC.Models
                 }
             }
         }
+
+        public void RegisterEmployee(List<string> employeeData)
+        {
+            string fname = employeeData[0];
+            string lname = employeeData[1];
+            string eid = employeeData[2];
+            string email = employeeData[3];
+            string password = employeeData[4];
+            string dob = employeeData[5];
+            int age = Convert.ToInt32(employeeData[6]);
+            string gender = employeeData[7];
+            string pob = employeeData[8];
+            string bloodgroup = employeeData[9];  
+            string fathername = employeeData[10];
+            string mothername = employeeData[11];
+            string sname = employeeData[12];
+            string dept = employeeData[13];
+            string designation = employeeData[14];
+            string jdate = employeeData[15];
+            decimal bpay = Convert.ToDecimal(employeeData[16]);
+            decimal gpay = Convert.ToDecimal(employeeData[17]);
+            decimal hra = Convert.ToDecimal(employeeData[18]);
+            decimal inc = Convert.ToDecimal(employeeData[19]);
+            decimal da = Convert.ToDecimal(employeeData[20]);
+            string accountno = employeeData[21];
+            string ifsc = employeeData[22];
+            string bankname = employeeData[23];
+            string paddress = employeeData[24];
+            string caddress = employeeData[25];
+            string cnumber = employeeData[26];
+            string remarks = employeeData[27];
+        } 
     }
 }
 

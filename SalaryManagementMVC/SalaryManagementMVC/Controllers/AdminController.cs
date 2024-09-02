@@ -172,7 +172,7 @@ namespace SalaryManagementMVC.Controllers
             };
 
             // Create an instance of the model class
-            EmployeeModel model = new EmployeeModel();
+            AdminModel model = new AdminModel();
 
             // Pass the list to the model class method
             model.RegisterEmployee(employeeData);
