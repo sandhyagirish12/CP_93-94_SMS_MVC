@@ -105,7 +105,7 @@ namespace SalaryManagementMVC.Models
             string email = employeeData[3];
             string password = employeeData[4];
             string dob = employeeData[5];
-            int age = Convert.ToInt32(employeeData[6]);
+            string uname = employeeData[6];
             string gender = employeeData[7];
             string pob = employeeData[8];
             string bloodgroup = employeeData[9];  
@@ -134,21 +134,20 @@ namespace SalaryManagementMVC.Models
             {
                 connection.Open();
 
-                string insertQuery = @"INSERT INTO EmployeeData VALUES 
-                        (@eid, @uname, @fname, @lname, @email, @pass, @gender, @dob, @age,
-                        @pob, @bloodgroup, @fathername, @mothername, @sname, @jdate, @dept, @designation, 
-                        @bpay, @gpay, @hra, @inc, @da, @accountno, @ifsc, @bankname, 
-                        @paddress, @caddress, @cnumber, @remarks)";
+                string insertQuery = @"INSERT INTO EmployeeData VALUES(
+                        @eid, @fname, @lname, @email, @pass, @gender, @dob, @uname, @pob, @bloodgroup, 
+                        @fathername, @mothername, @sname, @jdate, @dept, @designation, @bpay, @gpay, 
+                        @hra, @inc, @da, @accountno, @ifsc, @bankname,@paddress, @caddress, @cnumber, @remarks
+                        )";
                 SqlCommand command = new SqlCommand(insertQuery, connection);
                 command.Parameters.AddWithValue("@eid", eid);
-                //command.Parameters.AddWithValue("@uname", uname);
                 command.Parameters.AddWithValue("@fname", fname);
                 command.Parameters.AddWithValue("@lname", lname);
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@pass", hashedPassword);
                 command.Parameters.AddWithValue("@gender", gender);
                 command.Parameters.AddWithValue("@dob", dob);
-                command.Parameters.AddWithValue("@age", age);
+                command.Parameters.AddWithValue("@uname", uname);
                 command.Parameters.AddWithValue("@pob", pob);
                 command.Parameters.AddWithValue("@bloodgroup", bloodgroup);
                 command.Parameters.AddWithValue("@fathername", fathername);

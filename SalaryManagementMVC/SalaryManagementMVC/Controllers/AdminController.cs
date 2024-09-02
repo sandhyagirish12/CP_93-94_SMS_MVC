@@ -147,7 +147,7 @@ namespace SalaryManagementMVC.Controllers
                 frm["email"],
                 frm["password"],
                 frm["dob"],
-                frm["age"],
+                frm["username"],
                 frm["gender"],
                 frm["pob"],
                 frm["bloodgroup"],
@@ -169,7 +169,6 @@ namespace SalaryManagementMVC.Controllers
                 frm["caddress"],
                 frm["cnumber"],
                 frm["remarks"],
-                frm["username"]
             };
 
             // Create an instance of the model class
