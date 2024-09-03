@@ -197,6 +197,13 @@ namespace SalaryManagementMVC.Controllers
             return View("ViewEmployee",dt);
         }
 
+        public ActionResult DeleteEmployee()
+        {
+            AdminModel model=new AdminModel();
+            model.EmployeeDelete();
+            return View("ViewEmployee");
+        }
+
         public ActionResult ManagePayroll()
         {
             return View("Payroll");
