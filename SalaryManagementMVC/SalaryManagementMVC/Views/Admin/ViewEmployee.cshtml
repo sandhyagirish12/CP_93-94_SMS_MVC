@@ -32,6 +32,7 @@
                                 <th>Department</th>
                                 <th>Designation</th>
                                 @* <th>Salary</th>*@
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +44,10 @@
                                     <td>@dr["Lname"].ToString()</td>
                                     <td>@dr["Department"].ToString()</td>
                                     <td>@dr["Designation"].ToString()</td>
+                                    <td>
+                                        <button class="btn btn-success">Edit</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
