@@ -1,6 +1,7 @@
 ﻿using SalaryManagementMVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -190,6 +191,9 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult ViewEmployee()
         {
+            AdminModel model = new AdminModel();
+            DataTable dt = model.getAllEmployee();
+
             return View("ViewEmployee");
         }
 
