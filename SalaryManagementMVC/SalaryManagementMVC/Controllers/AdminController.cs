@@ -147,7 +147,7 @@ namespace SalaryManagementMVC.Controllers
                 frm["email"],
                 frm["password"],
                 frm["dob"],
-                frm["username"],
+                frm["uname"],
                 frm["gender"],
                 frm["pob"],
                 frm["bloodgroup"],
@@ -167,7 +167,7 @@ namespace SalaryManagementMVC.Controllers
                 frm["bankname"],
                 frm["paddress"],
                 frm["caddress"],
-                frm["cnumber"],
+                frm["contact"],
                 frm["remarks"],
             };
 
@@ -177,7 +177,7 @@ namespace SalaryManagementMVC.Controllers
             // Pass the list to the model class method
             model.RegisterEmployee(employeeData);
 
-            return View("");
+            return View("CreateEmployee");
         }
 
         public ActionResult ViewEmployee()

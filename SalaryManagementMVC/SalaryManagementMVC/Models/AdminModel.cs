@@ -134,11 +134,14 @@ namespace SalaryManagementMVC.Models
             {
                 connection.Open();
 
-                string insertQuery = @"INSERT INTO EmployeeData VALUES(
-                        @eid, @fname, @lname, @email, @pass, @gender, @dob, @uname, @pob, @bloodgroup, 
-                        @fathername, @mothername, @sname, @jdate, @dept, @designation, @bpay, @gpay, 
-                        @hra, @inc, @da, @accountno, @ifsc, @bankname,@paddress, @caddress, @cnumber, @remarks
-                        )";
+                string insertQuery = @"INSERT INTO EmployeeData(EmployeeId, Fname, Lname, Email, Password, Gender, DOB, Username, PlaceofBirth, Bloodgroup, 
+                                       Fathername, Mothername, Spousename, Joiningdate, Department, Designation, Basicpay, Gradepay, Increment, HRA, DA,
+                                       Accountno, IFSC, Bankname,PAddress, CAddress,Contactno, Remarks)
+                                       VALUES(
+                                       @eid, @fname, @lname, @email, @pass, @gender, @dob, @uname, @pob, @bloodgroup, 
+                                       @fathername, @mothername, @sname, @jdate, @dept, @designation, @bpay, @gpay, 
+                                       @hra, @inc, @da, @accountno, @ifsc, @bankname,@paddress, @caddress, @cnumber, @remarks
+                                        )";
                 SqlCommand command = new SqlCommand(insertQuery, connection);
                 command.Parameters.AddWithValue("@eid", eid);
                 command.Parameters.AddWithValue("@fname", fname);
