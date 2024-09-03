@@ -3,6 +3,14 @@
     ViewBag.Title = "CreateEmployee";
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function() {
+            alert('@ViewBag.Message');
+        };
+    </script>
+}
 
 <div class="container mt-5">
     <!-- Nav Tabs -->
@@ -21,211 +29,211 @@
         <!-- Create Account Form -->
         <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="create-tab">
             <div class="form-container mt-3">
-    <form method="post" action="@Url.Action("RegisterEmployee")">
-        <!-- Row 1 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" name="eid" required>
-                    <label for="employeeId">Employee ID</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="Username" name="uname" required>
-                    <label for="username">Username</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" required>
-                    <label for="firstName">First Name</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" required>
-                    <label for="lastName">Last Name</label>
-                </div>
-            </div>
-        </div>
+                <form method="post" action="@Url.Action("RegisterEmployee")">
+                    <!-- Row 1 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" name="eid" required>
+                                <label for="employeeId">Employee ID</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="username" placeholder="Username" name="uname" required>
+                                <label for="username">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" required>
+                                <label for="firstName">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" required>
+                                <label for="lastName">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 2 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
-                    <label for="dob">DOB</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <select class="form-control" id="gender" name="gender">
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <label for="gender">Gender</label>
-                </div>
-            </div>
-        </div>
+                    <!-- Row 2 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
+                                <label for="dob">DOB</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <label for="gender">Gender</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 3 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" name="pob" required>
-                    <label for="placeOfBirth">Place of Birth</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group" name="bloodgroup" required>
-                    <label for="bloodGroup">Blood Group</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="fathersName" placeholder="Father's Name" name="fathername" required>
-                    <label for="fathersName">Father's Name</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername" required>
-                    <label for="mothersName">Mother's Name</label>
-                </div>
-            </div>
-        </div>
+                    <!-- Row 3 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" name="pob" required>
+                                <label for="placeOfBirth">Place of Birth</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group" name="bloodgroup" required>
+                                <label for="bloodGroup">Blood Group</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="fathersName" placeholder="Father's Name" name="fathername" required>
+                                <label for="fathersName">Father's Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername" required>
+                                <label for="mothersName">Mother's Name</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 4 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name" name="sname" required>
-                    <label for="spouseName">Spouse Name</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="department" placeholder="Department" name="dept" required>
-                    <label for="department">Department</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" required>
-                    <label for="designation">Designation</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date" name="jdate" required>
-                    <label for="joiningDate">Joining Date</label>
-                </div>
-            </div>
-        </div>
+                    <!-- Row 4 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name" name="sname" required>
+                                <label for="spouseName">Spouse Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="department" placeholder="Department" name="dept" required>
+                                <label for="department">Department</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" required>
+                                <label for="designation">Designation</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date" name="jdate" required>
+                                <label for="joiningDate">Joining Date</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 5 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay" name="bpay" required>
-                    <label for="basicPay">Basic Pay</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay" name="gpay" required>
-                    <label for="gradePay">Grade Pay</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="hra" placeholder="HRA" name="hra" required>
-                    <label for="hra">HRA</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="increment" placeholder="Increment" name="inc" required>
-                    <label for="increment">Increment</label>
-                </div>
-            </div>
-        </div>
+                    <!-- Row 5 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay" name="bpay" required>
+                                <label for="basicPay">Basic Pay</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay" name="gpay" required>
+                                <label for="gradePay">Grade Pay</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="hra" placeholder="HRA" name="hra" required>
+                                <label for="hra">HRA</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="increment" placeholder="Increment" name="inc" required>
+                                <label for="increment">Increment</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 6 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="da" placeholder="DA" name="da" required>
-                    <label for="da">DA</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno" required>
-                    <label for="accountNo">Account No</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" required>
-                    <label for="ifsc">IFSC</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankname" required>
-                    <label for="bankName">Bank Name</label>
-                </div>
-            </div>
-        </div>
+                    <!-- Row 6 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="da" placeholder="DA" name="da" required>
+                                <label for="da">DA</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno" required>
+                                <label for="accountNo">Account No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" required>
+                                <label for="ifsc">IFSC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankname" required>
+                                <label for="bankName">Bank Name</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Row 7 -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress" required>
-                    <label for="permanentAddress">Permanent Address</label>
-                </div>
+                    <!-- Row 7 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress" required>
+                                <label for="permanentAddress">Permanent Address</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" name="caddress" required>
+                                <label for="currentAddress">Current Address</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="contactNo" placeholder="Contact No" name="contact" required>
+                                <label for="contactNo">Contact No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="remarks" placeholder="Remarks" name="remarks" rows="3" required></textarea>
+                                <label for="remarks">Remarks</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Register</button>
+                </form>
             </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" name="caddress" required>
-                    <label for="currentAddress">Current Address</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="contactNo" placeholder="Contact No" name="contact" required>
-                    <label for="contactNo">Contact No</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-floating mb-3">
-                    <textarea class="form-control" id="remarks" placeholder="Remarks" name="remarks" rows="3" required></textarea>
-                    <label for="remarks">Remarks</label>
-                </div>
-            </div>
-        
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">Register</button>
-    </form>
-</div>
 
         </div>
 

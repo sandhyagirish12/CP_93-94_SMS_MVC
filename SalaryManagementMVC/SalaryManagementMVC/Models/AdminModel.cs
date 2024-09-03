@@ -97,7 +97,7 @@ namespace SalaryManagementMVC.Models
             }
         }
 
-        public void RegisterEmployee(List<string> employeeData)
+        public bool RegisterEmployee(List<string> employeeData)
         {
             string fname = employeeData[0];
             string lname = employeeData[1];
@@ -173,6 +173,7 @@ namespace SalaryManagementMVC.Models
                 command.Parameters.AddWithValue("@remarks", remarks);
 
                 command.ExecuteNonQuery();
+                return true;
             }
         } 
     }

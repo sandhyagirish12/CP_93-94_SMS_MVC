@@ -175,9 +175,17 @@ namespace SalaryManagementMVC.Controllers
             AdminModel model = new AdminModel();
 
             // Pass the list to the model class method
-            model.RegisterEmployee(employeeData);
-
-            return View("CreateEmployee");
+            bool isRegistered = model.RegisterEmployee(employeeData);
+            if(isRegistered)
+            {
+                ViewBag.Message = "Successfully Registered";
+                return View("CreateEmployee");
+            }
+            else
+            {
+                return View("CreateEmployee");
+            }
+            
         }
 
         public ActionResult ViewEmployee()
