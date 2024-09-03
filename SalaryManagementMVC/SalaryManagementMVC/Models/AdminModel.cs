@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -176,6 +178,23 @@ namespace SalaryManagementMVC.Models
                 return true;
             }
         } 
+
+        public DataTable getAllEmployee()
+        {
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+                
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT EmployeeId,Fname,Lname,Department,Designation FROM EmployeeData", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                
+            }
+                return dt;
+
+        }
     }
 }
 
