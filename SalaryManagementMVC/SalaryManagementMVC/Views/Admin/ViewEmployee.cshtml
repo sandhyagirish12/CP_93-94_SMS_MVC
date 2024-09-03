@@ -1,4 +1,7 @@
-﻿
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
 @{
     ViewBag.Title = "ViewEmployee";
     Layout = "~/Views/shared/AdminMaster.cshtml";
@@ -17,6 +20,13 @@
     </ul>
 
     @*Dummy table*@
+    @{ 
+        if (Model.Rows.Count > 0)
+            {
+
+            
+
+
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="view" role="tabpanel" aria-labelledby="view-tab">
             <div class="table-container mt-3">
@@ -54,7 +64,13 @@
                         </tr>
                     </tbody>
                 </table>
+                }
+                else
+                {
+                <span > No Records Found..</span>
+                }
             </div>
         </div>
     </div>
+        }
 </div>
