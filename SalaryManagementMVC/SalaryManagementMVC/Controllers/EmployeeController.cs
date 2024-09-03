@@ -18,21 +18,20 @@ namespace SalaryManagementMVC.Controllers
         public ActionResult EmployeeLogin(FormCollection frm)
         {
 
-            //EmployeeModel model = new EmployeeModel();
-            //string username = frm["uname"];
-            //string password = frm["password"];
-            //bool loginstatus = model.EmployeeLogin(username, password);
-            //if (loginstatus)
-            //{
-            //    Session["Username"] = username;
-            //    return View("Dashboard");
-            //}
-            //else
-            //{
-            //    ViewBag.Message = "Invalid username or password. Please try again.";
-            //    return View("Home");
-            //}
-            return View("Dashboard");
+            EmployeeModel model = new EmployeeModel();
+            string username = frm["uname"];
+            string password = frm["password"];
+            bool loginstatus = model.EmployeeLogin(username, password);
+            if (loginstatus)
+            {
+                Session["Username"] = username;
+                return View("Dashboard");
+            }
+            else
+            {
+                ViewBag.Message = "Invalid username or password. Please try again.";
+                return View("Home");
+            }
         }
 
         public ActionResult VerifyEmail()
@@ -67,6 +66,7 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             return View("Home");
         }
     }
