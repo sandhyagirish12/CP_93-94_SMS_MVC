@@ -32,15 +32,17 @@
             <div class="table-container mt-3">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>Name</th>
-                            <th>Department</th>
-                            <th>Position</th>
-                            <th>Salary</th>
-                        </tr>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                @* <th>Salary</th>*@
+                            </tr>
                     </thead>
                     <tbody>
+                        @foreach(DataRow dr )
                         <tr>
                             <td>1</td>
                             <td>John Doe</td>
@@ -48,20 +50,7 @@
                             <td>Manager</td>
                             <td>$60,000</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>IT</td>
-                            <td>Developer</td>
-                            <td>$75,000</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mike Johnson</td>
-                            <td>Finance</td>
-                            <td>Analyst</td>
-                            <td>$50,000</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
                 }
