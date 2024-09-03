@@ -194,7 +194,7 @@ namespace SalaryManagementMVC.Controllers
             AdminModel model = new AdminModel();
             DataTable dt = model.getAllEmployee();
 
-            return View("ViewEmployee");
+            return View("ViewEmployee",dt);
         }
 
         public ActionResult ManagePayroll()

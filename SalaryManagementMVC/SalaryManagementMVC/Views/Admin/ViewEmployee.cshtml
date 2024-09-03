@@ -18,20 +18,13 @@
             @Html.ActionLink("View Employees", "ViewEmployee", "Admin", null, new { @class = "nav-link active", id = "view-tab", role = "tab", aria_controls = "view" })
         </li>
     </ul>
-
-    @*Dummy table*@
-    @{ 
-        if (Model.Rows.Count > 0)
-            {
-
-            
-
-
-    <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="view" role="tabpanel" aria-labelledby="view-tab">
             <div class="table-container mt-3">
-                <table class="table table-striped">
-                    <thead>
+                @if (Model.Rows.Count > 0)
+                {
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
                                 <th>Employee ID</th>
                                 <th>FirstName</th>
@@ -40,26 +33,26 @@
                                 <th>Designation</th>
                                 @* <th>Salary</th>*@
                             </tr>
-                    </thead>
-                    <tbody>
-                        @foreach(DataRow dr )
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>HR</td>
-                            <td>Manager</td>
-                            <td>$60,000</td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow dr in Model.Rows)
+                            {
+                                <tr>
+                                    <td>@dr["EmployeeId"].ToString()</td>
+                                    <td>@dr["Fname"].ToString()</td>
+                                    <td>@dr["Lname"].ToString()</td>
+                                    <td>@dr["Department"].ToString()</td>
+                                    <td>@dr["Designation"].ToString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 }
                 else
                 {
-                <span > No Records Found..</span>
+                    <span> No Records Found..</span>
                 }
             </div>
         </div>
     </div>
-        }
 </div>
