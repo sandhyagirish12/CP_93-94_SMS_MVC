@@ -45,8 +45,8 @@
                                     <td>@dr["Department"].ToString()</td>
                                     <td>@dr["Designation"].ToString()</td>
                                     <td>
-                                        @Html.ActionLink("Edit", "EditEmployee", new { EmployeeId = dr["EmployeeId"].ToString() }, new { @class = "btn btn-success" })
-                                        @Html.ActionLink("Delete", "DeleteEmployee", new { EmployeeId = dr["EmployeeId"].ToString() }, new { @class = "btn btn-danger" })
+                                        @Html.ActionLink("Edit", "EditEmployee", new { eid = dr["EmployeeId"].ToString() }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "DeleteEmployee", new { eid = dr["EmployeeId"].ToString() }, new { @class = "btn btn-danger" })
                                     </td>
                                     
                                 </tr>

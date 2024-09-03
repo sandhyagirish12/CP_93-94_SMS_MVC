@@ -193,6 +193,18 @@ namespace SalaryManagementMVC.Models
                 
             }
                 return dt;
+        }
+
+        public void EmployeeDelete(int eid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM EmployeeData WHERE EmployeeId = @eid", connection);
+                command.Parameters.AddWithValue("@eid", eid);
+                command.ExecuteNonQuery();
+            }
 
         }
     }
