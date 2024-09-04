@@ -195,6 +195,19 @@ namespace SalaryManagementMVC.Models
                 return dt;
         }
 
+        public DataTable EmployeeDetail()
+        {
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeData", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+            }
+                return dt;
+        }
         public void EmployeeDelete(int eid)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
