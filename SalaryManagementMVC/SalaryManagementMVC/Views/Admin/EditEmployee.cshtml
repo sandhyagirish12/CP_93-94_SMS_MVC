@@ -1,4 +1,7 @@
-﻿
+﻿@*@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable*@
+
 @{
     ViewBag.Title = "EditEmployee";
 }
@@ -9,25 +12,25 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" name="eid" required disabled>
+                    <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" name="eid" value="@ViewBag.EmployeeId" required disabled>
                     <label for="employeeId">Employee ID</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="Username" name="uname" required>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="uname" value="@ViewBag.Username" required>
                     <label for="username">Username</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" required>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" value="@ViewBag.FirstName" required>
                     <label for="firstName">First Name</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" required>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" value="@ViewBag.LastName"  required>
                     <label for="lastName">Last Name</label>
                 </div>
             </div>

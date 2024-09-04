@@ -195,14 +195,15 @@ namespace SalaryManagementMVC.Models
                 return dt;
         }
 
-        public DataTable EmployeeDetail()
+        public DataTable EmployeeDetail(int eid)
         {
             DataTable dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeData", connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeData WHERE EmployeeId = @eid" , connection);
+                command.Parameters.AddWithValue("@eid", eid);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
             }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -202,7 +203,39 @@ namespace SalaryManagementMVC.Controllers
             DataTable dt = new DataTable();
             AdminModel model = new AdminModel();
             dt = model.EmployeeDetail(eid);
-            return RedirectToAction("EditEmployee",dt);
+           
+            // Check if the DataTable has any rows
+            if (dt.Rows.Count > 0)
+            {
+                ViewBag.EmployeeId = Convert.ToInt32(dt.Rows[0]["EmployeeId"]);
+                ViewBag.Username = dt.Rows[0]["Username"].ToString();
+                ViewBag.FirstName = dt.Rows[0]["FirstName"].ToString();
+                ViewBag.LastName = dt.Rows[0]["LastName"].ToString();
+                ViewBag.Email = dt.Rows[0]["Email"].ToString();
+                ViewBag.DateOfBirth = dt.Rows[0]["DateOfBirth"].ToString();
+                ViewBag.Gender = dt.Rows[0]["Gender"].ToString();
+                ViewBag.PlaceOfBirth = dt.Rows[0]["PlaceOfBirth"].ToString();
+                ViewBag.BloodGroup = dt.Rows[0]["BloodGroup"].ToString();
+                ViewBag.FatherName = dt.Rows[0]["FatherName"].ToString();
+                ViewBag.MotherName = dt.Rows[0]["MotherName"].ToString();
+                ViewBag.SpouseName = dt.Rows[0]["SpouseName"].ToString();
+                ViewBag.Department = dt.Rows[0]["Department"].ToString();
+                ViewBag.Designation = dt.Rows[0]["Designation"].ToString();
+                ViewBag.JoiningDate = dt.Rows[0]["JoiningDate"].ToString();
+                ViewBag.BasicPay = Convert.ToDecimal(dt.Rows[0]["BasicPay"]);
+                ViewBag.GradePay = Convert.ToDecimal(dt.Rows[0]["GradePay"]);
+                ViewBag.HRA = Convert.ToDecimal(dt.Rows[0]["HRA"]);
+                ViewBag.Increment = Convert.ToDecimal(dt.Rows[0]["Increment"]);
+                ViewBag.DA = Convert.ToDecimal(dt.Rows[0]["DA"]);
+                ViewBag.AccountNo = dt.Rows[0]["AccountNo"].ToString();
+                ViewBag.IFSC = dt.Rows[0]["IFSC"].ToString();
+                ViewBag.BankName = dt.Rows[0]["BankName"].ToString();
+                ViewBag.PermanentAddress = dt.Rows[0]["PermanentAddress"].ToString();
+                ViewBag.CurrentAddress = dt.Rows[0]["CurrentAddress"].ToString();
+                ViewBag.ContactNo = dt.Rows[0]["ContactNo"].ToString();
+                ViewBag.Remarks = dt.Rows[0]["Remarks"].ToString();
+            }
+            return View("EditEmployee");
         }
         public ActionResult DeleteEmployee(int eid)
         {
