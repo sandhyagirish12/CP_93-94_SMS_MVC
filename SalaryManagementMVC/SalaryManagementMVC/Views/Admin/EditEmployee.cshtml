@@ -4,6 +4,8 @@
 
 @{
     ViewBag.Title = "EditEmployee";
+    Layout = "~/Views/shared/AdminMaster.cshtml";
+
 }
 
 <div class="form-container mt-3">
@@ -40,58 +42,58 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="@ViewBag.Email" required>
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="@ViewBag.Password" required disabled>
                     <label for="password">Password</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
+                    <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" value="@ViewBag.DateOfBirth" required>
                     <label for="dob">DOB</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <select class="form-control" id="gender" name="gender">
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                    <select class="form-control" id="gender" name="gender" required>
+                        <option value="male" @(ViewBag.Gender == "male" ? "selected" : null)>Male</option>
+                        <option value="female" @(ViewBag.Gender == "female" ? "selected" : null)>Female</option>
+                        <option value="other" @(ViewBag.Gender == "other" ? "selected" : null)>Other</option>
                     </select>
                     <label for="gender">Gender</label>
                 </div>
             </div>
+
         </div>
 
         <!-- Row 3 -->
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" name="pob" required>
+                    <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" name="pob" value="@ViewBag.PlaceOfBirth" required>
                     <label for="placeOfBirth">Place of Birth</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group" name="bloodgroup" required>
+                    <input type="text" class="form-control" id="bloodGroup" placeholder="Blood Group" name="bloodgroup" value="@ViewBag.BloodGroup" required>
                     <label for="bloodGroup">Blood Group</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="fathersName" placeholder="Father's Name" name="fathername" required>
+                    <input type="text" class="form-control" id="fathersName" placeholder="Father's Name" name="fathername" value="@ViewBag.FatherName" required>
                     <label for="fathersName">Father's Name</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername" required>
+                    <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername"  value="@ViewBag.MotherName"required>
                     <label for="mothersName">Mother's Name</label>
                 </div>
             </div>
@@ -101,25 +103,25 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name" name="sname" required>
+                    <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name" name="sname" value="@ViewBag.SpouseName" required>
                     <label for="spouseName">Spouse Name</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="department" placeholder="Department" name="dept" required>
+                    <input type="text" class="form-control" id="department" placeholder="Department" name="dept"  value="@ViewBag.Department" required>
                     <label for="department">Department</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" required>
+                    <input type="text" class="form-control" id="designation" placeholder="Designation" name="designation" value="@ViewBag.Designation" required>
                     <label for="designation">Designation</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date" name="jdate" required>
+                    <input type="date" class="form-control" id="joiningDate" placeholder="Joining Date" name="jdate" value="@ViewBag.JoiningDate" required>
                     <label for="joiningDate">Joining Date</label>
                 </div>
             </div>
@@ -129,25 +131,25 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay" name="bpay" required>
+                    <input type="number" class="form-control" id="basicPay" placeholder="Basic Pay" name="bpay" value="@ViewBag.BasicPay" required>
                     <label for="basicPay">Basic Pay</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay" name="gpay" required>
+                    <input type="number" class="form-control" id="gradePay" placeholder="Grade Pay" name="gpay" value="@ViewBag.GradePay" required>
                     <label for="gradePay">Grade Pay</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="hra" placeholder="HRA" name="hra" required>
+                    <input type="number" class="form-control" id="hra" placeholder="HRA" name="hra" value="@ViewBag.HRA" required>
                     <label for="hra">HRA</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="increment" placeholder="Increment" name="inc" required>
+                    <input type="number" class="form-control" id="increment" placeholder="Increment" name="inc" value="@ViewBag.Increment" required>
                     <label for="increment">Increment</label>
                 </div>
             </div>
@@ -157,25 +159,25 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="da" placeholder="DA" name="da" required>
+                    <input type="number" class="form-control" id="da" placeholder="DA" name="da" value="@ViewBag.DA" required>
                     <label for="da">DA</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno" required>
+                    <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno"  value="@ViewBag.AccountNo" required>
                     <label for="accountNo">Account No</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" required>
+                    <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" value="@ViewBag.IFSC"  required>
                     <label for="ifsc">IFSC</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankname" required>
+                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankname" value="@ViewBag.BankName" required>
                     <label for="bankName">Bank Name</label>
                 </div>
             </div>
@@ -185,25 +187,25 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress" required>
+                    <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress"  value="@ViewBag.PermanentAddress"required>
                     <label for="permanentAddress">Permanent Address</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" name="caddress" required>
+                    <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" name="caddress" value="@ViewBag.CurrentAddress" required>
                     <label for="currentAddress">Current Address</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="contactNo" placeholder="Contact No" name="contact" required>
+                    <input type="text" class="form-control" id="contactNo" placeholder="Contact No" name="contact" value="@ViewBag.ContactNo" required>
                     <label for="contactNo">Contact No</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="remarks" placeholder="Remarks" name="remarks" rows="3" required></textarea>
+                    <textarea class="form-control" id="remarks" placeholder="Remarks" name="remarks" rows="3" required>@ViewBag.Remarks</textarea>
                     <label for="remarks">Remarks</label>
                 </div>
             </div>
