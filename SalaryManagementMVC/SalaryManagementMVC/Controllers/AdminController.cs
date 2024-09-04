@@ -197,7 +197,13 @@ namespace SalaryManagementMVC.Controllers
             return View("ViewEmployee",dt);
         }
 
-
+        public ActionResult EditEmployee(int eid)
+        {
+            DataTable dt = new DataTable();
+            AdminModel model = new AdminModel();
+            dt = model.EmployeeDetail(eid);
+            return RedirectToAction("EditEmployee",dt);
+        }
         public ActionResult DeleteEmployee(int eid)
         {
             AdminModel model=new AdminModel();
