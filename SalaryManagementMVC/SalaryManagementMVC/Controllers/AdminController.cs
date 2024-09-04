@@ -197,6 +197,7 @@ namespace SalaryManagementMVC.Controllers
             return View("ViewEmployee",dt);
         }
 
+
         public ActionResult DeleteEmployee(int eid)
         {
             AdminModel model=new AdminModel();
