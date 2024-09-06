@@ -238,6 +238,10 @@ namespace SalaryManagementMVC.Controllers
             }
             return View("EditEmployee");
         }
+        //public  ActionResult UpdateEmployee(int id)
+        //{
+
+        //}
         public ActionResult DeleteEmployee(int eid)
         {
             AdminModel model=new AdminModel();

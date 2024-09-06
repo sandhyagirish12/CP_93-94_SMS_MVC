@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" value="@ViewBag.LastName"  required>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lname" value="@ViewBag.LastName" required>
                     <label for="lastName">Last Name</label>
                 </div>
             </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername"  value="@ViewBag.MotherName"required>
+                    <input type="text" class="form-control" id="mothersName" placeholder="Mother's Name" name="mothername" value="@ViewBag.MotherName" required>
                     <label for="mothersName">Mother's Name</label>
                 </div>
             </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="department" placeholder="Department" name="dept"  value="@ViewBag.Department" required>
+                    <input type="text" class="form-control" id="department" placeholder="Department" name="dept" value="@ViewBag.Department" required>
                     <label for="department">Department</label>
                 </div>
             </div>
@@ -165,13 +165,13 @@
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno"  value="@ViewBag.AccountNo" required>
+                    <input type="text" class="form-control" id="accountNo" placeholder="Account No" name="accountno" value="@ViewBag.AccountNo" required>
                     <label for="accountNo">Account No</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" value="@ViewBag.IFSC"  required>
+                    <input type="text" class="form-control" id="ifsc" placeholder="IFSC" name="ifsc" value="@ViewBag.IFSC" required>
                     <label for="ifsc">IFSC</label>
                 </div>
             </div>
@@ -187,7 +187,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress"  value="@ViewBag.PermanentAddress"required>
+                    <input type="text" class="form-control" id="permanentAddress" placeholder="Permanent Address" name="paddress" value="@ViewBag.PermanentAddress" required>
                     <label for="permanentAddress">Permanent Address</label>
                 </div>
             </div>
@@ -211,7 +211,8 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Update</button>
+        @*<button type="submit" class="btn btn-primary mt-3" new { eid = dr["EmployeeId"].ToString() }>Update</button>*@
+        @Html.ActionLink("Update", "UpdateEmployee", new { eid = ViewBag.EmployeeId }, new { @class = "btn btn-primary mt-3" })
     </form>
 </div>
 
