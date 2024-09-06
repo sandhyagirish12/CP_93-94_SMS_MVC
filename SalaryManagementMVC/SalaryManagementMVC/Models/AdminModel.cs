@@ -8,6 +8,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Helpers;
+using System.Xml.Linq;
 
 namespace SalaryManagementMVC.Models
 {
@@ -54,18 +56,18 @@ namespace SalaryManagementMVC.Models
             }
         }
 
-       public bool AdminLogin(string username, string password)
+        public bool AdminLogin(string username, string password)
         {
             string hashedPassword = HashPassword(password);
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string LoginQuery = "SELECT Username, Password FROM AdminData WHERE Username = '" + username +  "' AND Password = '" + hashedPassword + "'";
+                string LoginQuery = "SELECT Username, Password FROM AdminData WHERE Username = '" + username + "' AND Password = '" + hashedPassword + "'";
                 SqlCommand command = new SqlCommand(LoginQuery, connection);
                 SqlDataReader reader = command.ExecuteReader();
-                if(reader.HasRows)
-                {   
+                if (reader.HasRows)
+                {
 
                     return true;
 
@@ -84,7 +86,7 @@ namespace SalaryManagementMVC.Models
             {
                 connection.Open();
                 string existQuery = "SELECT Email FROM AdminData WHERE Email = @email";
-                SqlCommand command=new SqlCommand(existQuery, connection);
+                SqlCommand command = new SqlCommand(existQuery, connection);
                 command.Parameters.AddWithValue("@email", email);
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -110,7 +112,7 @@ namespace SalaryManagementMVC.Models
             string uname = employeeData[6];
             string gender = employeeData[7];
             string pob = employeeData[8];
-            string bloodgroup = employeeData[9];  
+            string bloodgroup = employeeData[9];
             string fathername = employeeData[10];
             string mothername = employeeData[11];
             string sname = employeeData[12];
@@ -177,22 +179,22 @@ namespace SalaryManagementMVC.Models
                 command.ExecuteNonQuery();
                 return true;
             }
-        } 
+        }
 
         public DataTable getAllEmployee()
         {
             DataTable dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
-                
+
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand("SELECT EmployeeId,Fname,Lname,Department,Designation FROM EmployeeData", connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
-                
+
             }
-                return dt;
+            return dt;
         }
 
         public DataTable EmployeeDetail(int eid)
@@ -202,12 +204,12 @@ namespace SalaryManagementMVC.Models
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeData WHERE EmployeeId = @eid" , connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeData WHERE EmployeeId = @eid", connection);
                 command.Parameters.AddWithValue("@eid", eid);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
             }
-                return dt;
+            return dt;
         }
 
         public bool UpdateEmployee(List<string> employeeData)
@@ -216,7 +218,7 @@ namespace SalaryManagementMVC.Models
             string lname = employeeData[1];
             string eid = employeeData[2];
             string email = employeeData[3];
-           // string password = employeeData[4];
+            // string password = employeeData[4];
             string dob = employeeData[5];
             string uname = employeeData[6];
             string gender = employeeData[7];
@@ -259,7 +261,7 @@ namespace SalaryManagementMVC.Models
                 command.Parameters.AddWithValue("@fname", fname);
                 command.Parameters.AddWithValue("@lname", lname);
                 command.Parameters.AddWithValue("@email", email);
-               // command.Parameters.AddWithValue("@pass", pass);
+                // command.Parameters.AddWithValue("@pass", pass);
                 command.Parameters.AddWithValue("@gender", gender);
                 command.Parameters.AddWithValue("@dob", dob);
                 command.Parameters.AddWithValue("@uname", uname);
@@ -301,9 +303,22 @@ namespace SalaryManagementMVC.Models
 
         }
 
-        public bool CreateDeduction(int did,string dname,decimal percentage,decimal amount)
+        public bool CreateDeduction(int did, string dname, decimal percentage, decimal amount)
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
 
+                connection.Open();
+                string insertQuery = "INSERT INTO Deduction(DeductionId, Dname, Percentage, Amount) VALUES(@did, @dname, @percentage, @amount)";
+                SqlCommand command = new SqlCommand(insertQuery, connection);
+                command.Parameters.AddWithValue("@did", did);
+                command.Parameters.AddWithValue("@dname", dname);
+                command.Parameters.AddWithValue("@percentage", percentage);
+                command.Parameters.AddWithValue("@amount", amount);
+                command.ExecuteNonQuery();
+                return true;
+            }
         }
     }
 
