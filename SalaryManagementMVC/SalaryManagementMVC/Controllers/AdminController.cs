@@ -238,10 +238,55 @@ namespace SalaryManagementMVC.Controllers
             }
             return View("EditEmployee");
         }
-        //public  ActionResult UpdateEmployee(int id)
-        //{
+        public ActionResult UpdateEmployee(FormCollection frm)
+        {
+            var employeeData = new List<string>
+            {
+                frm["fname"],
+                frm["lname"],
+                frm["eid"],
+                frm["email"],
+                frm["password"],
+                frm["dob"],
+                frm["uname"],
+                frm["gender"],
+                frm["pob"],
+                frm["bloodgroup"],
+                frm["fathername"],
+                frm["mothername"],
+                frm["sname"],
+                frm["dept"],
+                frm["designation"],
+                frm["jdate"],
+                frm["bpay"],
+                frm["gpay"],
+                frm["hra"],
+                frm["inc"],
+                frm["da"],
+                frm["accountno"],
+                frm["ifsc"],
+                frm["bankname"],
+                frm["paddress"],
+                frm["caddress"],
+                frm["contact"],
+                frm["remarks"],
+            };
 
-        //}
+            // Create an instance of the model class
+            AdminModel model = new AdminModel();
+
+            // Pass the list to the model class method
+            bool isUpdated = model.UpdateEmployee(employeeData);
+            if (isUpdated)
+            {
+                ViewBag.Message = "Successfully Updated";
+                return View("EditEmployee");
+            }
+            else
+            {
+                return View("ViewEmployee");
+            }
+        }
         public ActionResult DeleteEmployee(int eid)
         {
             AdminModel model=new AdminModel();
