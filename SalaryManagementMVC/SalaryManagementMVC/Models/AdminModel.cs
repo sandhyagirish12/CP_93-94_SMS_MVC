@@ -209,6 +209,85 @@ namespace SalaryManagementMVC.Models
             }
                 return dt;
         }
+
+        public bool UpdateEmployee(List<string> employeeData)
+        {
+            string fname = employeeData[0];
+            string lname = employeeData[1];
+            string eid = employeeData[2];
+            string email = employeeData[3];
+           // string password = employeeData[4];
+            string dob = employeeData[5];
+            string uname = employeeData[6];
+            string gender = employeeData[7];
+            string pob = employeeData[8];
+            string bloodgroup = employeeData[9];
+            string fathername = employeeData[10];
+            string mothername = employeeData[11];
+            string sname = employeeData[12];
+            string dept = employeeData[13];
+            string designation = employeeData[14];
+            string jdate = employeeData[15];
+            decimal bpay = Convert.ToDecimal(employeeData[16]);
+            decimal gpay = Convert.ToDecimal(employeeData[17]);
+            decimal hra = Convert.ToDecimal(employeeData[18]);
+            decimal inc = Convert.ToDecimal(employeeData[19]);
+            decimal da = Convert.ToDecimal(employeeData[20]);
+            string accountno = employeeData[21];
+            string ifsc = employeeData[22];
+            string bankname = employeeData[23];
+            string paddress = employeeData[24];
+            string caddress = employeeData[25];
+            string cnumber = employeeData[26];
+            string remarks = employeeData[27];
+
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string updatequery = @"UPDATE EmployeeData SET Fname = @fname, Lname = @lname, Email = @email,
+                                     Gender = @gender, DOB = @dob , Username = @uname , PlaceofBirth = @pob, 
+                                     Bloodgroup = @bloodgroup,Fathername = @fathername, Mothername = @mothername,
+                                     Spousename = @sname, Joiningdate = @jdate, Department = @dept,
+                                     Designation = @designation, Basicpay = @bpay, Gradepay = @gpay, Increment = @inc,
+                                     HRA = @hra, DA = @da, Accountno = @accountno, IFSC = @ifsc, 
+                                     Bankname = @bankname,PAddress = @paddress, CAddress = @caddress,Contactno = @cnumber,
+                                     Remarks = @remarks WHERE EmployeeId = @eid ";
+                SqlCommand command = new SqlCommand(updatequery, connection);
+                command.Parameters.AddWithValue("@eid", eid);
+                command.Parameters.AddWithValue("@fname", fname);
+                command.Parameters.AddWithValue("@lname", lname);
+                command.Parameters.AddWithValue("@email", email);
+               // command.Parameters.AddWithValue("@pass", pass);
+                command.Parameters.AddWithValue("@gender", gender);
+                command.Parameters.AddWithValue("@dob", dob);
+                command.Parameters.AddWithValue("@uname", uname);
+                command.Parameters.AddWithValue("@pob", pob);
+                command.Parameters.AddWithValue("@bloodgroup", bloodgroup);
+                command.Parameters.AddWithValue("@fathername", fathername);
+                command.Parameters.AddWithValue("@mothername", mothername);
+                command.Parameters.AddWithValue("@sname", sname);
+                command.Parameters.AddWithValue("@jdate", jdate);
+                command.Parameters.AddWithValue("@dept", dept);
+                command.Parameters.AddWithValue("@designation", designation);
+                command.Parameters.AddWithValue("@bpay", bpay);
+                command.Parameters.AddWithValue("@gpay", gpay);
+                command.Parameters.AddWithValue("@hra", hra);
+                command.Parameters.AddWithValue("@inc", inc);
+                command.Parameters.AddWithValue("@da", da);
+                command.Parameters.AddWithValue("@accountno", accountno);
+                command.Parameters.AddWithValue("@ifsc", ifsc);
+                command.Parameters.AddWithValue("@bankname", bankname);
+                command.Parameters.AddWithValue("@paddress", paddress);
+                command.Parameters.AddWithValue("@caddress", caddress);
+                command.Parameters.AddWithValue("@cnumber", cnumber);
+                command.Parameters.AddWithValue("@remarks", remarks);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+        }
         public void EmployeeDelete(int eid)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
