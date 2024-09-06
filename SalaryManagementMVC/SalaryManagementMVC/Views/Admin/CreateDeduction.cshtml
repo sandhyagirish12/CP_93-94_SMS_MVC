@@ -3,5 +3,57 @@
     ViewBag.Title = "CreateDeduction";
 }
 
-<h2>CreateDeduction</h2>
+<div class="container mt-5">
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            @Html.ActionLink("Create Deduction", "CreateDeduction", "Admin", null, new { @class = "nav-link active", id = "create-tab", role = "tab", aria_controls = "create", aria_selected = "true" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("View Deduction", "ViewDeduction", "Admin", null, new { @class = "nav-link", id = "view-tab", role = "tab", aria_controls = "view", aria_selected = "false" })
+        </li>
+
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="myTabContent">
+        <!-- Create Account Form -->
+        <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="create-tab">
+            <div class="form-container mt-3">
+                <form method="post" action="@Url.Action("CreateDeduction")">
+                    <!-- Row 1 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="deductionId" placeholder="Deduction ID" name="did" required>
+                                <label for="deductionId">Deduction ID</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="dname" placeholder="Deductionname" name="dname" required>
+                                <label for="dname">Deductionname</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="percentage" placeholder="percentage" name="percentage" required>
+                                <label for="percentage">Percentage</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="amount" placeholder="Amount" name="amount" required>
+                                <label for="amount">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
