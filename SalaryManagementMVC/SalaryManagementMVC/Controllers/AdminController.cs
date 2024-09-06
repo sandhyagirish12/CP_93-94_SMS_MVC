@@ -280,7 +280,7 @@ namespace SalaryManagementMVC.Controllers
             if (isUpdated)
             {
                 ViewBag.Message = "Successfully Updated";
-                return View("EditEmployee");
+                return View("ViewEmployee");
             }
             else
             {
