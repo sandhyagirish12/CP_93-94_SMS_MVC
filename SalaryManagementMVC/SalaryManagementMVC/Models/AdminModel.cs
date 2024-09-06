@@ -300,7 +300,14 @@ namespace SalaryManagementMVC.Models
             }
 
         }
+
+        public bool CreateDeduction(int did,string dname,decimal percentage,decimal amount)
+        {
+
+        }
     }
+
+
 }
 
 

@@ -309,8 +309,15 @@ namespace SalaryManagementMVC.Controllers
             return View("Leave");
         }
 
-        public ActionResult ManageDeduction()
+        public ActionResult CreateDeduction(FormCollection form)
         {
+            AdminModel model = new AdminModel();
+            int Deductionid = Convert.ToInt32(form["did"]);
+            string Deductionname = form["dname"];
+            decimal Percentage = Convert.ToDecimal(form["percentage"]);
+            decimal Amount = Convert.ToDecimal(form["amount"]);
+            bool isCreateDeduction = model.CreateDeduction(Deductionid, Deductionname, Percentage, Amount);
+            ViewBag.Message = "Successfully Registered";
             return View("Deduction");
         }
 
