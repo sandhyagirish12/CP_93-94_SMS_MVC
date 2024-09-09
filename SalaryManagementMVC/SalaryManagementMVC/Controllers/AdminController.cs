@@ -178,7 +178,7 @@ namespace SalaryManagementMVC.Controllers
 
             // Pass the list to the model class method
             bool isRegistered = model.RegisterEmployee(employeeData);
-            if(isRegistered)
+            if (isRegistered)
             {
                 ViewBag.Message = "Successfully Registered";
                 return View("CreateEmployee");
@@ -187,7 +187,7 @@ namespace SalaryManagementMVC.Controllers
             {
                 return View("CreateEmployee");
             }
-            
+
         }
 
         public ActionResult ViewEmployee()
@@ -195,7 +195,7 @@ namespace SalaryManagementMVC.Controllers
             AdminModel model = new AdminModel();
             DataTable dt = model.getAllEmployee();
 
-            return View("ViewEmployee",dt);
+            return View("ViewEmployee", dt);
         }
 
         public ActionResult EditEmployee(int eid)
@@ -203,7 +203,7 @@ namespace SalaryManagementMVC.Controllers
             DataTable dt = new DataTable();
             AdminModel model = new AdminModel();
             dt = model.EmployeeDetail(eid);
-           
+
             // Check if the DataTable has any rows
             if (dt.Rows.Count > 0)
             {
@@ -289,7 +289,7 @@ namespace SalaryManagementMVC.Controllers
         }
         public ActionResult DeleteEmployee(int eid)
         {
-            AdminModel model=new AdminModel();
+            AdminModel model = new AdminModel();
             model.EmployeeDelete(eid);
             return RedirectToAction("ViewEmployee");
         }
@@ -323,6 +323,12 @@ namespace SalaryManagementMVC.Controllers
             bool isCreateDeduction = model.CreateDeduction(Deductionid, Deductionname, Percentage, Amount);
             ViewBag.Message = "Successfully Registered";
             return View("CreateDeduction");
+        }
+        public ActionResult ViewDeduction()
+        {
+            AdminModel model = new AdminModel();
+            DataTable dt = model.getAllDeduction();
+            return View("ViewDeduction");
         }
 
         //public ActionResult ManageDepartment()
