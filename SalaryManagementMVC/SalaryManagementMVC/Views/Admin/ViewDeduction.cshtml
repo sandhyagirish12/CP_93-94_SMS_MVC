@@ -31,6 +31,7 @@
                                 <th>Deduction Name</th>
                                 <th>Percentage</th>
                                 <th>Amount</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,7 @@
                                     <td>@dr["Dname"].ToString()</td>
                                     <td>@dr["Percentage"].ToString()</td>
                                     <td>@dr["Amount"].ToString()</td>
+
                                     <td>
                                         @Html.ActionLink("Edit", "EditDeduction", new { eid = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
                                         @Html.ActionLink("Delete", "DeleteDeduction", new { eid = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })

@@ -320,6 +320,21 @@ namespace SalaryManagementMVC.Models
                 return true;
             }
         }
+        
+        public DataTable getAllDeduction()
+        {
+            DataTable dt=new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string getQuery = "SELECT * FROM Deduction";
+                SqlCommand command = new SqlCommand(getQuery, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+            }
+            return dt;
+        }
     }
 
 

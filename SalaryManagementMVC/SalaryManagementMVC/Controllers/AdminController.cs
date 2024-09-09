@@ -328,7 +328,7 @@ namespace SalaryManagementMVC.Controllers
         {
             AdminModel model = new AdminModel();
             DataTable dt = model.getAllDeduction();
-            return View("ViewDeduction");
+            return View("ViewDeduction",dt);
         }
 
         //public ActionResult ManageDepartment()
