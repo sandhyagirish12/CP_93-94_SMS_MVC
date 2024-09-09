@@ -311,7 +311,9 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult CreateDeduction()
         {
-            return View("CreateDeduction");
+            AdminModel model = new AdminModel();
+            DataTable dt = model.getAllDeduction();
+            return View("CreateDeduction",dt);
         }
         public ActionResult RegisterDeduction(FormCollection form)
         {
@@ -322,14 +324,14 @@ namespace SalaryManagementMVC.Controllers
             decimal Amount = Convert.ToDecimal(form["amount"]);
             bool isCreateDeduction = model.CreateDeduction(Deductionid, Deductionname, Percentage, Amount);
             ViewBag.Message = "Successfully Registered";
-            return View("CreateDeduction");
+            return RedirectToAction("CreateDeduction");
         }
-        public ActionResult ViewDeduction()
-        {
-            AdminModel model = new AdminModel();
-            DataTable dt = model.getAllDeduction();
-            return View("ViewDeduction",dt);
-        }
+        //public ActionResult ViewDeduction()
+        //{
+        //    AdminModel model = new AdminModel();
+        //    DataTable dt = model.getAllDeduction();
+        //    return View("CreateDeduction",dt);
+        //}
 
         //public ActionResult ManageDepartment()
         //{

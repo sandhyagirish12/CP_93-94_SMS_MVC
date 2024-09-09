@@ -12,10 +12,11 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            @Html.ActionLink("Create Deduction", "CreateDeduction", "Admin", null, new { @class = "nav-link active", id = "create-tab", role = "tab", aria_controls = "create", aria_selected = "true" })
+            @Html.ActionLink("Create Deduction", "CreateDeduction", "Admin", null, new { @class = "nav-link ", id = "create-tab", role = "tab", aria_controls = "create", aria_selected = "false" })
         </li>
         <li class="nav-item">
-            @Html.ActionLink("View Deduction", "ViewDeduction", "Admin", null, new { @class = "nav-link", id = "view-tab", role = "tab", aria_controls = "view", aria_selected = "false" })
+            @Html.ActionLink("View Deduction", "ViewDeduction", "Admin", null, new { @class = "nav-link active", id = "view-tab", role = "tab", aria_controls = "view", aria_selected = "true" })
+
         </li>
 
     </ul>
