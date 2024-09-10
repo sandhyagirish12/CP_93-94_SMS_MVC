@@ -6,18 +6,18 @@
 
 <div class="container mt-3">
     <h3>Loan Request</h3>
-    <form>
+    <form method="post" action=@Url.Action("CreateLoan")>
         <!-- Row 1 -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="loanNumber" placeholder="Loan Number">
+                    <input type="text" class="form-control" id="loanNumber" placeholder="Loan Number" name="loannumber">
                     <label for="loanNumber">Loan Number</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <select class="form-control" id="loanType">
+                    <select class="form-control" id="loanType" name="loanType">
                         <option value="">Select loan type</option>
                         <option value="personal">Personal Loan</option>
                         <option value="home">Home Loan</option>
@@ -33,13 +33,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name">
+                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name" name="bankName">
                     <label for="bankName">Bank Name</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="ifscCode" placeholder="IFSC Code">
+                    <input type="text" class="form-control" id="ifscCode" placeholder="IFSC Code" name="ifscCode">
                     <label for="ifscCode">IFSC Code</label>
                 </div>
             </div>
@@ -49,13 +49,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="totalAmount" placeholder="Total Amount">
+                    <input type="number" class="form-control" id="totalAmount" placeholder="Total Amount" name="totalAmount">
                     <label for="totalAmount">Total Amount</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="monthlyPayment" placeholder="Monthly Payment">
+                    <input type="number" class="form-control" id="monthlyPayment" placeholder="Monthly Payment" name="monthlyPayment">
                     <label for="monthlyPayment">Monthly Payment</label>
                 </div>
             </div>
@@ -65,13 +65,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="startingDate">
+                    <input type="date" class="form-control" id="startingDate" name="startingDate">
                     <label for="startingDate">Starting Date</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="tenure" placeholder="Tenure (in months)">
+                    <input type="number" class="form-control" id="tenure" placeholder="Tenure (in months)" name="tenure">
                     <label for="tenure">Tenure (in months)</label>
                 </div>
             </div>
@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="description" rows="3" placeholder="Enter loan description"></textarea>
+                    <textarea class="form-control" id="description" rows="3" placeholder="Enter loan description" name="description"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>

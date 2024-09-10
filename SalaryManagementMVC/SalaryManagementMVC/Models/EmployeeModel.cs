@@ -45,7 +45,27 @@ namespace SalaryManagementMVC.Models
                 }
             }
         }
+        public void CreateLoan(string loannumber, string loanType, string bankName,  string ifscCode, decimal totalAmount, decimal monthlyPayment, string startingDate, int tenure, string description)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string insertQuery = @"INSERT INTO LoanDetails(LoanNo, LType, BankName, IFSC, Installment, StartDate, Tenure, Description)
+                                     VALUES (@LoanNo, @LType, @BankName, @IFSC, @Installment, @StartDate, @Tenure,@Description)";
+                SqlCommand cmd = new SqlCommand(insertQuery, connection);
+                cmd.Parameters.AddWithValue("@LoanNo", loannumber);
+                cmd.Parameters.AddWithValue("@LType", loanType);
+                cmd.Parameters.AddWithValue("@BankName", bankName);
+                cmd.Parameters.AddWithValue("@IFSC", ifscCode);
+                cmd.Parameters.AddWithValue("@Installment", monthlyPayment);
+                cmd.Parameters.AddWithValue("@StartDate", startingDate);
+                cmd.Parameters.AddWithValue("@Tenure", tenure);
+                cmd.Parameters.AddWithValue("@Description", description);
+                cmd.ExecuteNonQuery();
 
+            }
+        }
         public void CreateLeave(string ltype, string fromdate, string todate, string description)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;

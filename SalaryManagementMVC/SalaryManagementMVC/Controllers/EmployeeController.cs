@@ -58,11 +58,6 @@ namespace SalaryManagementMVC.Controllers
         {
             return View("Loan");
         }
-
-        public ActionResult Leave()
-        {
-            return View("Leave");
-        }
         public ActionResult RegisterLeave(FormCollection frm)
         {
             string ltype = frm["leaveType"].ToString();
@@ -71,6 +66,25 @@ namespace SalaryManagementMVC.Controllers
             string description = frm["description"].ToString();
             EmployeeModel model = new EmployeeModel();
             model.CreateLeave(ltype, fromdate, todate, description);
+            return View("Leave");
+        }
+        public ActionResult Leave()
+        {
+            return View("Leave");
+        }
+        public ActionResult CreateLoan(FormCollection frm)
+        {
+            string loannumber = frm["loannumber"].ToString();
+            string loanType = frm["loanType"].ToString();
+            string bankName = frm["bankName"].ToString();
+            string ifscCode = frm["ifscCode"].ToString();
+            decimal totalAmount = Convert.ToDecimal(frm["totalAmount"]);
+            decimal monthlyPayment = Convert.ToDecimal(frm["monthlyPayment"]);
+            string startingDate = frm["startingDate"].ToString();
+            int tenure = Convert.ToInt32(frm["tenure"]);
+            string description = frm["description"].ToString();
+            EmployeeModel model = new EmployeeModel();
+            model.CreateLoan(loannumber, loanType, bankName, ifscCode, totalAmount, monthlyPayment, startingDate, tenure, description);
             return View("Leave");
         }
 
