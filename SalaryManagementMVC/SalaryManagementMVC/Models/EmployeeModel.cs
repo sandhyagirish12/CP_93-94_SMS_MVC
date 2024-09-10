@@ -52,7 +52,7 @@ namespace SalaryManagementMVC.Models
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string insertQuery = "INSERT INTO LeaveDetails(LType, FromDate, Todate, Description) VALUES @ltype, @fromdate, @todate, @description";
+                string insertQuery = "INSERT INTO LeaveDetails(LType, FromDate, Todate, Description) VALUES (@ltype, @fromdate, @todate, @description)";
                 SqlCommand cmd= new SqlCommand(insertQuery, connection);
                 cmd.Parameters.AddWithValue("@ltype", ltype);
                 cmd.Parameters.AddWithValue("@fromdate", fromdate);

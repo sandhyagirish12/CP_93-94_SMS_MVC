@@ -6,12 +6,12 @@
 
 <div class="container mt-3">
     <h3>Leave Request</h3>
-    <form method="post" actin=@Url.Action("RegisterLeave")>
+    <form method="post" action=@Url.Action("RegisterLeave")>
         <!-- Row 1 -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <select class="form-control" id="leaveType">
+                    <select class="form-control" id="leaveType" name="leaveType">
                         <option value="">Select leave type</option>
                         <option value="sick">Sick Leave</option>
                         <option value="vacation">Vacation Leave</option>
@@ -27,13 +27,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="fromDate">
+                    <input type="date" class="form-control" id="fromDate" name="fromDate">
                     <label for="fromDate">From Date</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="toDate">
+                    <input type="date" class="form-control" id="toDate" name="toDate">
                     <label for="toDate">To Date</label>
                 </div>
             </div>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="description" rows="3" placeholder="Enter leave description"></textarea>
+                    <textarea class="form-control" id="description" rows="3" placeholder="Enter leave description" name="description"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
