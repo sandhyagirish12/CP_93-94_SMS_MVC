@@ -351,7 +351,21 @@ namespace SalaryManagementMVC.Models
             }
             return dt;
         }
-
+        public  void UpdateDeduction(int did, string dname, decimal amount, decimal percentage)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string updateQuery = "UPDATE Deduction SET Dname = @dname, Amount = @amount, Percentage = @percentage WHERE DeductionId = @did";
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.Parameters.AddWithValue("@dname", dname);
+                command.Parameters.AddWithValue("@amount", amount);
+                command.Parameters.AddWithValue("@percentage", percentage);
+                command.Parameters.AddWithValue("@did", did);
+                command.ExecuteNonQuery();
+            }
+        }
         public void DeleteDeduction(int did)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;

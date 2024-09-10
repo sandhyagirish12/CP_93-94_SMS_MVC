@@ -344,7 +344,18 @@ namespace SalaryManagementMVC.Controllers
                 ViewBag.Percentage = dt.Rows[0]["Percentage"];
                 ViewBag.Amount = dt.Rows[0]["Amount"];
             }
-            return RedirectToAction("EditDeduction");
+            return View("EditDeduction");
+        }
+
+        public  ActionResult UpdateDeduction(FormCollection frm)
+        {
+            int did = Convert.ToInt32(frm["did"]);
+            string dname = frm["dname"].ToString();
+            decimal amount = Convert.ToDecimal(frm["amount"]);
+            decimal percentage = Convert.ToDecimal(frm["percentage"]);
+            AdminModel model=new AdminModel();
+            model.UpdateDeduction(did,dname,amount,percentage);
+            return RedirectToAction("CreateDeduction");
         }
         public ActionResult DeleteDeduction(int did)
         {
