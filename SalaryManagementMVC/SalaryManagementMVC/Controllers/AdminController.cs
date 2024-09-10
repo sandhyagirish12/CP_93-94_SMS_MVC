@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -326,6 +327,24 @@ namespace SalaryManagementMVC.Controllers
             bool isCreateDeduction = model.CreateDeduction(Deductionid, Deductionname, Percentage, Amount);
             ViewBag.Message = "Successfully Registered";
             return RedirectToAction("CreateDeduction");
+        }
+
+        public ActionResult EditDeduction(int did)
+        {
+
+            DataTable dt = new DataTable();
+            AdminModel model = new AdminModel();
+            dt = model.GetDeduction(did);
+
+            // Check if the DataTable has any rows
+            if (dt.Rows.Count > 0)
+            {
+                ViewBag.DeductionId=dt.Rows[0]["DeductionId"];
+                ViewBag.Dname = dt.Rows[0]["Dname"];
+                ViewBag.Percentage = dt.Rows[0]["Percentage"];
+                ViewBag.Amount = dt.Rows[0]["Amount"];
+            }
+            return RedirectToAction("EditDeduction");
         }
         public ActionResult DeleteDeduction(int did)
         {
