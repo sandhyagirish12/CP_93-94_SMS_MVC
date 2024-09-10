@@ -59,9 +59,15 @@ namespace SalaryManagementMVC.Controllers
             return View("Loan");
         }
 
-        public ActionResult Leave()
+        public ActionResult RegisterLeave(FormCollection frm)
         {
-            return View("Leave");
+            string ltype = frm["leaveType"].ToString();
+            string fromdate = frm["fromDate"].ToString();
+            string todate = frm["toDate"].ToString();
+            string description = frm["description"].ToString();
+            EmployeeModel model = new EmployeeModel();
+            model.CreateLeave(ltype, fromdate, todate, description);
+            return View("RegisterLeave");
         }
 
         public ActionResult Logout()

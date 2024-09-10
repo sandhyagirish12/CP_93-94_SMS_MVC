@@ -45,5 +45,22 @@ namespace SalaryManagementMVC.Models
                 }
             }
         }
+
+        public void CreateLeave(string ltype, string fromdate, string todate, string description)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string insertQuery = "INSERT INTO LeaveDetails(LType, FromDate, Todate, Description) VALUES @ltype, @fromdate, @todate, @description";
+                SqlCommand cmd= new SqlCommand(insertQuery, connection);
+                cmd.Parameters.AddWithValue("@ltype", ltype);
+                cmd.Parameters.AddWithValue("@fromdate", fromdate);
+                cmd.Parameters.AddWithValue("@todate", todate);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
     }
 }
