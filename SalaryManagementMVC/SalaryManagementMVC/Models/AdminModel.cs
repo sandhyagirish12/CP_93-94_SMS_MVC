@@ -321,7 +321,7 @@ namespace SalaryManagementMVC.Models
             }
         }
         
-        public DataTable getAllDeduction()
+        public DataTable GetAllDeduction()
         {
             DataTable dt=new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -335,9 +335,21 @@ namespace SalaryManagementMVC.Models
             }
             return dt;
         }
+
+        public void DeleteDeduction(int did)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string deleteQuery = "DELETE FROM Deduction Where DeductionId = @did";
+                SqlCommand command = new SqlCommand(deleteQuery,connection);
+                command.Parameters.AddWithValue("@did", did);
+                command.ExecuteNonQuery();
+               
+            }
+        }
     }
-
-
 }
 
 

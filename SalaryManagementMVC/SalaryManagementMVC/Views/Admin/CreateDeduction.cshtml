@@ -7,7 +7,7 @@
 }
 
 <div class="container mt-5">
-    
+    <h2>Enter Deduction Details</h2>
     
             <div class="form-container mt-3">
                 <form method="post" action="@Url.Action("RegisterDeduction")">
@@ -40,7 +40,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
-            </div>
+            </div><br />
+    <h6>Showing Deduction Details:-</h6>
             <div class="table-container mt-3">
                 @if (Model.Rows.Count > 0)
                 {
@@ -64,8 +65,8 @@
                                     <td>@dr["Amount"].ToString()</td>
 
                                     <td>
-                                        @Html.ActionLink("Edit", "EditDeduction", new { eid = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
-                                        @Html.ActionLink("Delete", "DeleteDeduction", new { eid = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })
+                                        @Html.ActionLink("Edit", "EditDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "DeleteDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })
                                     </td>
 
                                 </tr>

@@ -312,9 +312,10 @@ namespace SalaryManagementMVC.Controllers
         public ActionResult CreateDeduction()
         {
             AdminModel model = new AdminModel();
-            DataTable dt = model.getAllDeduction();
-            return View("CreateDeduction",dt);
+            DataTable dt = model.GetAllDeduction();
+            return View("CreateDeduction", dt);
         }
+       
         public ActionResult RegisterDeduction(FormCollection form)
         {
             AdminModel model = new AdminModel();
@@ -326,12 +327,12 @@ namespace SalaryManagementMVC.Controllers
             ViewBag.Message = "Successfully Registered";
             return RedirectToAction("CreateDeduction");
         }
-        //public ActionResult ViewDeduction()
-        //{
-        //    AdminModel model = new AdminModel();
-        //    DataTable dt = model.getAllDeduction();
-        //    return View("CreateDeduction",dt);
-        //}
+        public ActionResult DeleteDeduction(int did)
+        {
+            AdminModel  model=new AdminModel();
+            model.DeleteDeduction(did);
+            return RedirectToAction("CreateDeduction");
+        }
 
         //public ActionResult ManageDepartment()
         //{
