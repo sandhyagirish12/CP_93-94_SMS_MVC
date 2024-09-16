@@ -4,58 +4,52 @@
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
 
-<div class="container mt-5">
+@*<div class="container mt-5">*@
 
     <!-- Table for displaying loan requests -->
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Employee Name</th>
-                <th>Leave Type</th>
-                <th>From Date</th>
-                <th>To Date</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dummy Data -->
-            <tr>
-                <td>John Doe</td>
-                <td>Annual Leave</td>
-                <td>2024-08-20</td>
-                <td>2024-08-25</td>
-                <td>Family vacation</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Jane Smith</td>
-                <td>Sick Leave</td>
-                <td>2024-08-22</td>
-                <td>2024-08-23</td>
-                <td>Flu</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Mike Johnson</td>
-                <td>Emergency Leave</td>
-                <td>2024-08-24</td>
-                <td>2024-08-26</td>
-                <td>Family emergency</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    
+    <div class="table-container mt-3">
+        @if (Model.Rows.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Leave Type</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                        <tr>
+                            <td>@dr["LeaveId"].ToString()</td>
+                            <td>@dr["LType"].ToString()</td>
+                            <td>@dr["FromDate"].ToString()</td>
+                            <td>@dr["Todate"].ToString()</td>
+                            <td>@dr["Description"].ToString()</td>
+
+                            <td>
+                                @*@Html.ActionLink("Edit", "EditDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Delete", "DeleteDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })*@
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Deny</button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <span> No Records Found..</span>
+        }
+    </div>
+@*</div>*@
 
 
 
