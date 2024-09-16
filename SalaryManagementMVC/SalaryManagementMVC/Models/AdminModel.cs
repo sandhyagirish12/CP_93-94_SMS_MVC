@@ -379,6 +379,21 @@ namespace SalaryManagementMVC.Models
                
             }
         }
+        public DataTable GetLeaveDetails()
+        {
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT LeaveId,LType,FromDate,Todate,Description FROM LeaveDetails", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+
+            }
+            return dt;
+        }
     }
 }
 

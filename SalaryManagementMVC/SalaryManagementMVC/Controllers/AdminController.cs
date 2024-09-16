@@ -307,7 +307,11 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult ManageLeave()
         {
-            return View("Leave");
+
+            AdminModel model = new AdminModel();
+            DataTable dt = model.GetLeaveDetails();
+
+            return View("Leave", dt);
         }
 
         public ActionResult CreateDeduction()
