@@ -302,7 +302,9 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult ManageLoan()
         {
-            return View("Loan");
+            AdminModel model = new AdminModel();
+            DataTable dt = model.GetAllLoan();
+            return View("Loan", dt);
         }
 
         public ActionResult ManageLeave()
@@ -310,7 +312,6 @@ namespace SalaryManagementMVC.Controllers
 
             AdminModel model = new AdminModel();
             DataTable dt = model.GetLeaveDetails();
-
             return View("Leave", dt);
         }
 

@@ -394,6 +394,21 @@ namespace SalaryManagementMVC.Models
             }
             return dt;
         }
+        public DataTable GetAllLoan()
+        {
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT EmployeeId,LoanNo,Description FROM LoanDetails", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+
+            }
+            return dt;
+        }
     }
 }
 

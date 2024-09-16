@@ -1,49 +1,46 @@
-﻿
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
 @{
     ViewBag.Title = "Loan";
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
 
-<div class="container mt-5">
     <!-- Table for displaying loan details -->
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Employee ID</th>
-                <th>Loan Number</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dummy Data -->
-            <tr>
-                <td>101</td>
-                <td>L-001</td>
-                <td>Home Loan</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>L-002</td>
-                <td>Car Loan</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-            <tr>
-                <td>103</td>
-                <td>L-003</td>
-                <td>Personal Loan</td>
-                <td>
-                    <button class="btn btn-success">Approve</button>
-                    <button class="btn btn-danger">Deny</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    
+    <div class="table-container mt-3">
+        @if (Model.Rows.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Loan Number</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                        <tr>
+                            <td>@dr["EmployeeId"].ToString()</td>
+                            <td>@dr["LoanNo"].ToString()</td>
+                            <td>@dr["Description"].ToString()</td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "EditDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Delete", "DeleteDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })*@
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Deny</button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <span> No Records Found..</span>
+        }
+    </div>
