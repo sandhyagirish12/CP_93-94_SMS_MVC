@@ -402,12 +402,26 @@ namespace SalaryManagementMVC.Models
 
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT EmployeeId,LoanNo,Description FROM LoanDetails", connection);
+                SqlCommand command = new SqlCommand("SELECT EmployeeId,LoanId,LoanNo,Description FROM LoanDetails WHERE Status IS NULL ", connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
 
             }
             return dt;
+        }
+        public void LoanStatus(int Lid,string status)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                
+                    string updatequery = "UPDATE  LoanDetails SET Status=@status WHERE LoanId = @Lid";
+                    SqlCommand command = new SqlCommand(updatequery, connection);
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@Lid", Lid);
+                    command.ExecuteNonQuery();
+            }
         }
     }
 }

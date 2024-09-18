@@ -28,10 +28,8 @@
                             <td>@dr["LoanNo"].ToString()</td>
                             <td>@dr["Description"].ToString()</td>
                             <td>
-                                @*@Html.ActionLink("Edit", "EditDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
-                                    @Html.ActionLink("Delete", "DeleteDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })*@
-                                <button class="btn btn-success">Approve</button>
-                                <button class="btn btn-danger">Deny</button>
+                                @Html.ActionLink("Approve","LoanStatus", new { Lid = dr["LoanId"].ToString(),status = true }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Deny", "LoanStatus", new { Lid = dr["LoanId"].ToString(), status = false }, new { @class = "btn btn-danger" })
                             </td>
 
                         </tr>
