@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace SalaryManagementMVC.Models
 {
@@ -45,15 +46,21 @@ namespace SalaryManagementMVC.Models
                 }
             }
         }
-        public void CreateLoan(string loannumber, string loanType, string bankName,  string ifscCode, decimal totalAmount, decimal monthlyPayment, string startingDate, int tenure, string description)
+        public void CreateLoan(string username,string loannumber, string loanType, string bankName,  string ifscCode, decimal totalAmount, decimal monthlyPayment, string startingDate, int tenure, string description)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string insertQuery = @"INSERT INTO LoanDetails(LoanNo, LType, BankName, IFSC, Installment, StartDate, Tenure, Description)
-                                     VALUES (@LoanNo, @LType, @BankName, @IFSC, @Installment, @StartDate, @Tenure,@Description)";
+                string getidquery = "SELECT EmployeeId FROM EmployeeData WHERE Username=@username";
+                SqlCommand command = new SqlCommand(getidquery, connection);
+                command.Parameters.AddWithValue("@username", username);
+                string employeeId = command.ExecuteScalar().ToString();
+
+                string insertQuery = @"INSERT INTO LoanDetails(EmployeeId, LoanNo, LType, BankName, IFSC, Installment, StartDate, Tenure, Description)
+                                     VALUES (@employeeId, @LoanNo, @LType, @BankName, @IFSC, @Installment, @StartDate, @Tenure,@Description)";
                 SqlCommand cmd = new SqlCommand(insertQuery, connection);
+                cmd.Parameters.AddWithValue("@employeeId", employeeId);
                 cmd.Parameters.AddWithValue("@LoanNo", loannumber);
                 cmd.Parameters.AddWithValue("@LType", loanType);
                 cmd.Parameters.AddWithValue("@BankName", bankName);

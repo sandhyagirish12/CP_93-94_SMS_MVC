@@ -83,9 +83,10 @@ namespace SalaryManagementMVC.Controllers
             string startingDate = frm["startingDate"].ToString();
             int tenure = Convert.ToInt32(frm["tenure"]);
             string description = frm["description"].ToString();
+            string username = Session["Username"].ToString();
             EmployeeModel model = new EmployeeModel();
-            model.CreateLoan(loannumber, loanType, bankName, ifscCode, totalAmount, monthlyPayment, startingDate, tenure, description);
-            return View("Leave");
+            model.CreateLoan(username,loannumber, loanType, bankName, ifscCode, totalAmount, monthlyPayment, startingDate, tenure, description);
+            return View("Loan");
         }
 
         public ActionResult Logout()
