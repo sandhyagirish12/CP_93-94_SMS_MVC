@@ -28,17 +28,15 @@
                 @foreach (DataRow dr in Model.Rows)
                 {
                     <tr>
-                        <td>@dr["LeaveId"].ToString()</td>
+                        <td>@dr["EmployeeId"].ToString()</td>
                         <td>@dr["LType"].ToString()</td>
                         <td>@dr["FromDate"].ToString()</td>
                         <td>@dr["Todate"].ToString()</td>
                         <td>@dr["Description"].ToString()</td>
 
                         <td>
-                            @*@Html.ActionLink("Edit", "EditDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-success" })
-                                @Html.ActionLink("Delete", "DeleteDeduction", new { did = dr["DeductionId"].ToString() }, new { @class = "btn btn-danger" })*@
-                            <button class="btn btn-success">Approve</button>
-                            <button class="btn btn-danger">Deny</button>
+                            @Html.ActionLink("Approve", "LeaveStatusUpdate", new { Leaveid = dr["LeaveId"].ToString(), status = "approve" }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Deny", "LeaveStatusUpdate", new { Leaveid = dr["LeaveId"].ToString(), status = "deny" }, new { @class = "btn btn-danger" })
                         </td>
 
                     </tr>

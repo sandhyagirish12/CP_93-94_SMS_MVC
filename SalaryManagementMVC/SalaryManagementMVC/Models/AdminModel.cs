@@ -387,7 +387,7 @@ namespace SalaryManagementMVC.Models
 
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT LeaveId,LType,FromDate,Todate,Description FROM LeaveDetails", connection);
+                SqlCommand command = new SqlCommand("SELECT EmployeeId, LeaveId, LType, FromDate, Todate, Description FROM LeaveDetails WHERE Status = 'pending'", connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
 
@@ -402,7 +402,7 @@ namespace SalaryManagementMVC.Models
 
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT EmployeeId,LoanId,LoanNo,Description FROM LoanDetails WHERE Status IS NULL ", connection);
+                SqlCommand command = new SqlCommand("SELECT EmployeeId,LoanId,LoanNo,Description FROM LoanDetails WHERE Status = 'pending'", connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
 
@@ -421,6 +421,21 @@ namespace SalaryManagementMVC.Models
                     command.Parameters.AddWithValue("@status", status);
                     command.Parameters.AddWithValue("@Lid", Lid);
                     command.ExecuteNonQuery();
+            }
+        }
+
+        public void LeaveStatus(int Lid, string status)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string updatequery = "UPDATE  LeaveDetails SET Status=@status WHERE LeaveId = @Lid";
+                SqlCommand command = new SqlCommand(updatequery, connection);
+                command.Parameters.AddWithValue("@status", status);
+                command.Parameters.AddWithValue("@Lid", Lid);
+                command.ExecuteNonQuery();
             }
         }
     }

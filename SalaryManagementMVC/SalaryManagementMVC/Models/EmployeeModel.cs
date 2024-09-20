@@ -57,8 +57,8 @@ namespace SalaryManagementMVC.Models
                 command.Parameters.AddWithValue("@username", username);
                 string employeeId = command.ExecuteScalar().ToString();
 
-                string insertQuery = @"INSERT INTO LoanDetails(EmployeeId, LoanNo, LType, BankName, IFSC, Installment, StartDate, Tenure, Description)
-                                     VALUES (@employeeId, @LoanNo, @LType, @BankName, @IFSC, @Installment, @StartDate, @Tenure,@Description)";
+                string insertQuery = @"INSERT INTO LoanDetails(EmployeeId, LoanNo, LType, BankName, IFSC, Installment, StartDate, Tenure, Description, Status)
+                                     VALUES (@employeeId, @LoanNo, @LType, @BankName, @IFSC, @Installment, @StartDate, @Tenure,@Description,@status)";
                 SqlCommand cmd = new SqlCommand(insertQuery, connection);
                 cmd.Parameters.AddWithValue("@employeeId", employeeId);
                 cmd.Parameters.AddWithValue("@LoanNo", loannumber);
@@ -69,22 +69,29 @@ namespace SalaryManagementMVC.Models
                 cmd.Parameters.AddWithValue("@StartDate", startingDate);
                 cmd.Parameters.AddWithValue("@Tenure", tenure);
                 cmd.Parameters.AddWithValue("@Description", description);
+                cmd.Parameters.AddWithValue("@status", "pending");
                 cmd.ExecuteNonQuery();
 
             }
         }
-        public void CreateLeave(string ltype, string fromdate, string todate, string description)
+        public void CreateLeave(string username,string ltype, string fromdate, string todate, string description)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string insertQuery = "INSERT INTO LeaveDetails(LType, FromDate, Todate, Description) VALUES (@ltype, @fromdate, @todate, @description)";
+                string getidquery = "SELECT EmployeeId FROM EmployeeData WHERE Username=@username";
+                SqlCommand command = new SqlCommand(getidquery, connection);
+                command.Parameters.AddWithValue("@username", username);
+                string employeeId = command.ExecuteScalar().ToString();
+                string insertQuery = "INSERT INTO LeaveDetails(LType, FromDate, Todate, Description, EmployeeId, Status) VALUES (@ltype, @fromdate, @todate, @description, @employeeId, @status)";
                 SqlCommand cmd= new SqlCommand(insertQuery, connection);
                 cmd.Parameters.AddWithValue("@ltype", ltype);
                 cmd.Parameters.AddWithValue("@fromdate", fromdate);
                 cmd.Parameters.AddWithValue("@todate", todate);
                 cmd.Parameters.AddWithValue("@description", description);
+                cmd.Parameters.AddWithValue("@employeeId", employeeId);
+                cmd.Parameters.AddWithValue("@status", "pending");
                 cmd.ExecuteNonQuery();
 
             }

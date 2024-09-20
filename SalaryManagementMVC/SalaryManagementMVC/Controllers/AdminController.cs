@@ -307,7 +307,7 @@ namespace SalaryManagementMVC.Controllers
             return View("Loan", dt);
         }
 
-        public ActionResult LoanStatus(int Lid,string status)
+        public ActionResult LoanStatusUpdate(int Lid,string status)
         {
             AdminModel model = new AdminModel();
             model.LoanStatus(Lid,status);
@@ -322,6 +322,14 @@ namespace SalaryManagementMVC.Controllers
             DataTable dt = model.GetLeaveDetails();
             return View("Leave", dt);
         }
+        public ActionResult LeaveStatusUpdate(int Leaveid, string status)
+        {
+            AdminModel model = new AdminModel();
+            model.LeaveStatus(Leaveid, status);
+            return RedirectToAction("ManageLoan");
+
+        }
+
 
         public ActionResult CreateDeduction()
         {

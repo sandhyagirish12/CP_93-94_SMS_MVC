@@ -64,8 +64,9 @@ namespace SalaryManagementMVC.Controllers
             string fromdate = frm["fromDate"].ToString();
             string todate = frm["toDate"].ToString();
             string description = frm["description"].ToString();
+            string username = Session["Username"].ToString();
             EmployeeModel model = new EmployeeModel();
-            model.CreateLeave(ltype, fromdate, todate, description);
+            model.CreateLeave(username, ltype, fromdate, todate, description);
             return View("Leave");
         }
         public ActionResult Leave()
