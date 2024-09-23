@@ -326,7 +326,7 @@ namespace SalaryManagementMVC.Controllers
         {
             AdminModel model = new AdminModel();
             model.LeaveStatus(Leaveid, status);
-            return RedirectToAction("ManageLoan");
+            return RedirectToAction("ManageLeave");
 
         }
 

@@ -387,7 +387,9 @@ namespace SalaryManagementMVC.Models
 
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT EmployeeId, LeaveId, LType, FromDate, Todate, Description FROM LeaveDetails WHERE Status = 'pending'", connection);
+                // SqlCommand command = new SqlCommand("SELECT EmployeeId, LeaveId, LType, FromDate, Todate, Description FROM LeaveDetails WHERE Status = 'pending'", connection);
+                 SqlCommand command = new SqlCommand("SELECT LeaveDetails.LeaveId, LeaveDetails.LType, LeaveDetails.FromDate, LeaveDetails.ToDate, LeaveDetails.Description, CONCAT(EmployeeData.Fname, ' ', EmployeeData.Lname) AS EmployeeName FROM LeaveDetails JOIN  EmployeeData ON  LeaveDetails.EmployeeId = EmployeeData.EmployeeId WHERE Status = 'pending'", connection);
+
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
 
