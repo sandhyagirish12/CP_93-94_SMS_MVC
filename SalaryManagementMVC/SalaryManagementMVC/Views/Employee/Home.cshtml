@@ -24,6 +24,23 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                 <label for="floatingPassword">Password</label>
             </div>
+            <div class="mb-3">
+                <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password
+            </div>
+
+            <script>
+                function togglePassword() {
+                    var passwordField = document.getElementById("floatingPassword");
+                    var showPassword = document.getElementById("showPassword");
+
+                    // Toggle the password field type between 'password' and 'text'
+                    if (passwordField.type === "password") {
+                        passwordField.type = "text";
+                    } else {
+                        passwordField.type = "password";
+                    }
+                }
+            </script>
 
             @*@Html.ActionLink("Login", "Dashboard", "Employee", null, new { @class = "btn btn-primary w-100 py-2" })*@
             <button class="btn btn-primary w-100 py-2" type="submit" name="action">Login</button>
