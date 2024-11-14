@@ -194,7 +194,7 @@ namespace SalaryManagementMVC.Controllers
         public ActionResult ViewEmployee()
         {
             AdminModel model = new AdminModel();
-            DataTable dt = model.getAllEmployee();
+            DataTable dt = model.GetAllEmployee();
 
             return View("ViewEmployee", dt);
         }
@@ -297,6 +297,19 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult ManagePayroll()
         {
+            AdminModel model= new AdminModel();
+            DataTable dt=model.GetAllEmployee();
+            List<string> employeeIds = new List<string>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    employeeIds.Add(row["employeeId"].ToString());
+                }
+            }
+
+            // Pass the list of employee IDs to the view
+            ViewBag.EmployeeIds = employeeIds;
             return View("Payroll");
         }
 

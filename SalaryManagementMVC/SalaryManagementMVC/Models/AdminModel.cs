@@ -181,7 +181,7 @@ namespace SalaryManagementMVC.Models
             }
         }
 
-        public DataTable getAllEmployee()
+        public DataTable GetAllEmployee()
         {
             DataTable dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;

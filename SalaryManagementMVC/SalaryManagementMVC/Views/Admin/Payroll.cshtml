@@ -10,11 +10,12 @@
         <div class="form-row">
             <div class="col-md-3">
                 <label for="employeeId" class="label-text">Employee ID:</label>
-                <select id="employeeId" class="form-control">
-                    <option selected>EMP12345</option>
-                    <option>EMP67890</option>
-                    <option>EMP11223</option>
-                    <option>EMP44556</option>
+                <select id="employeeId" name="selectedEmployeeId" class="form-control">
+                    <option value="">-- Select Employee ID --</option>
+                    @foreach (var employeeId in ViewBag.EmployeeIds)
+                    {
+                        <option value="@employeeId">@employeeId</option>
+                    }
                 </select>
             </div>
             <div class="col-md-3">
