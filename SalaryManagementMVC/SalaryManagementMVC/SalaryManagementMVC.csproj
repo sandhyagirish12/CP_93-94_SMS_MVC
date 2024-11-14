@@ -137,6 +137,7 @@
     <Content Include="Views\Admin\EditEmployee.cshtml" />
     <Content Include="Views\Admin\CreateDeduction.cshtml" />
     <Content Include="Views\Admin\EditDeduction.cshtml" />
+    <Content Include="Views\Admin\CreatePayroll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
