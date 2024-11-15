@@ -197,7 +197,7 @@ namespace SalaryManagementMVC.Models
             return dt;
         }
 
-        public DataTable EmployeeDetail(int eid)
+        public DataTable EmployeeDetail(string eid)
         {
             DataTable dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;

@@ -199,7 +199,7 @@ namespace SalaryManagementMVC.Controllers
             return View("ViewEmployee", dt);
         }
 
-        public ActionResult EditEmployee(int eid)
+        public ActionResult EditEmployee(string eid)
         {
             DataTable dt = new DataTable();
             AdminModel model = new AdminModel();
@@ -311,6 +311,33 @@ namespace SalaryManagementMVC.Controllers
             // Pass the list of employee IDs to the view
             ViewBag.EmployeeIds = employeeIds;
             return View("Payroll");
+        }
+
+        public JsonResult GetEmployeeDetails(string employeeId)
+        {
+            AdminModel model = new AdminModel();
+            DataTable dt = model.EmployeeDetail(employeeId);
+
+            if (dt.Rows.Count > 0)
+            {
+                // Return employee data as JSON
+                var employeeData = new
+                {
+                    EmployeeName = dt.Rows[0]["Fname"].ToString() + " " + dt.Rows[0]["Lname"].ToString(),
+                    Designation = dt.Rows[0]["Designation"].ToString(),
+                    Department = dt.Rows[0]["Department"].ToString(),
+                    BasicPay = dt.Rows[0]["Basicpay"].ToString(),
+                    AccountNo = dt.Rows[0]["Accountno"].ToString(),
+                    Increment = dt.Rows[0]["Increment"].ToString(),
+                    HRA = dt.Rows[0]["HRA"].ToString(),
+                    DA = dt.Rows[0]["DA"].ToString()
+
+                    };
+
+                return Json(employeeData, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ManageLoan()

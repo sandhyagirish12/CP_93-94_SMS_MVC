@@ -20,44 +20,46 @@
             </div>
             <div class="col-md-3">
                 <label for="designation" class="label-text">Designation:</label>
-                <select id="designation" class="form-control">
-                    <option selected>D1</option>
-                    <option>D2</option>
-                    <option>D3</option>
-                    <option>D4</option>
-                </select>
+                <input type="text" id="designation" class="form-control" readonly />
             </div>
+
+            <!-- Month Dropdown -->
             <div class="col-md-3">
                 <label for="month" class="label-text">Month:</label>
                 <select id="month" class="form-control">
-                    <option selected>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
+                    <option selected disabled>Select Month</option>
+                    @foreach (var month in new List<string>
+                                        { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" })
+                    {
+                        <option value="@month">@month</option>
+                    }
                 </select>
             </div>
+
+            <!-- Year Dropdown -->
             <div class="col-md-3">
                 <label for="year" class="label-text">Year:</label>
                 <select id="year" class="form-control">
-                    <option selected>2024</option>
-                    <option>2023</option>
-                    <option>2022</option>
-                    <option>2021</option>
+                    <option selected disabled>Select Year</option>
+                    @for (var year = DateTime.Now.Year; year >= DateTime.Now.Year - 10; year--) // Adjust year range as needed
+                    {
+                        <option value="@year">@year</option>
+                    }
                 </select>
             </div>
         </div>
-    </div>
+            </div>
 
     <!-- Employee Name, Account Number -->
     <div class="salary-summary">
         <div class="form-row">
             <div class="col-md-6">
                 <label for="employeeName" class="label-text">Name:</label>
-                <p id="employeeName">John Doe</p>
+                <input type="text" id="employeename" class="form-control" readonly/>
             </div>
             <div class="col-md-6">
                 <label for="accNumber" class="label-text">Acc No:</label>
-                <p id="accNumber">123456789012</p>
+                <input type="text" id="accNumber" class="form-control" readonly/>
             </div>
         </div>
     </div>
@@ -67,11 +69,11 @@
         <div class="form-row">
             <div class="col-md-4">
                 <label class="label-text">Basic Pay:</label>
-                <p>₹50,000</p>
+                <input type="text" id="basicPay" class="form-control" readonly />
             </div>
             <div class="col-md-4">
                 <label class="label-text">Increment:</label>
-                <p>₹5,000</p>
+                <input type="text" id="increment" class="form-control" readonly />
             </div>
             <div class="col-md-4">
                 <label class="label-text">Salary:</label>
@@ -83,23 +85,23 @@
     <!-- Allowances and Deductions -->
     <div class="salary-section">
         <div class="form-row">
-            <div class="col-md-6">
+            @*<div class="col-md-6">
                 <label class="label-text">Travel Allowance:</label>
                 <p>₹1,000</p>
             </div>
             <div class="col-md-6">
                 <label class="label-text">Medical Allowance:</label>
                 <p>₹1,000</p>
-            </div>
+            </div>*@
         </div>
         <div class="form-row">
             <div class="col-md-6">
                 <label class="label-text">HRA:</label>
-                <p>2% - ₹1,000</p>
+                <input type="text" id="hra" class="form-control" readonly />
             </div>
             <div class="col-md-6">
                 <label class="label-text">DA:</label>
-                <p>5% - ₹2,500</p>
+                <input type="text" id="da" class="form-control" readonly />
             </div>
         </div>
     </div>
@@ -129,5 +131,35 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#employeeId').change(function () {
+            var selectedEmployeeId = $(this).val(); 
+
+            if (selectedEmployeeId) {
+                $.ajax({
+                    url: '@Url.Action("GetEmployeeDetails", "Admin")',
+                    type: 'GET',
+                    data: { employeeId: selectedEmployeeId },
+                    success: function (data) {
+                        if (data) {
+                            $('#employeename').val(data.EmployeeName);
+                            $('#designation').val(data.Designation);
+                            $('#basicPay').val(data.BasicPay);
+                            $('#accNumber').val(data.AccountNo);
+                            $('#increment').val(data.Increment);
+                            $('#hra').val(data.HRA);
+                            $('#da').val(data.DA);
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while retrieving employee details.");
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 
