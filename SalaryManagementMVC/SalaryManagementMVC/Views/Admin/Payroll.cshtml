@@ -24,23 +24,11 @@
                     <input type="text" id="designation" name="Designation" class="form-control" readonly />
                 </div>
 
-                <!-- Month Dropdown -->
-                <!--<div class="col-md-3">
-                    <label for="month" class="label-text">Month:</label>
-                    <select id="month" name="Month" class="form-control" required>
-                        <option selected disabled>Select Month</option>
-                        @foreach (var month in new List<string>
-                                                                                                                 { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" })
-                        {
-                            <option value="@month">@month</option>
-                        }
-                    </select>
-                </div>-->
-                <!-- Month Dropdown -->
+               <!-- Month Dropdown -->
                 <div class="col-md-3">
                     <label for="month" class="label-text">Month:</label>
                     <select id="month" name="Month" class="form-control" required>
-                        <option value="">Select Month</option>
+                        <option selected disabled>Select Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -155,8 +143,6 @@
         $(document).ready(function () {
             $('#employeeId').change(function () {
                 var selectedEmployeeId = $(this).val();
-                //var selectedMonth = $('#month').val();
-                //var selectedYear = $('#year').val();
                 if (selectedEmployeeId ) {
                     $.ajax({
                         url: '@Url.Action("GetEmployeeDetails", "Admin")',
@@ -173,8 +159,9 @@
                                 $('#hra').val(data.HRA);
                                 $('#da').val(data.DA);
                             }
-                            calculateSalary();
+                            calculateSalary(); 
                         },
+
                         error: function () {
                             alert("An error occurred while retrieving employee details.");
                         }
@@ -186,8 +173,8 @@
                 var selectedMonth = $('#month').val();
                 var selectedYear = $('#year').val();
                 var basicPay = parseFloat($('#basicPay').val()) || 0;
+               var salary = parseFloat($('#salary').val()) || 0;
                 
-
                 if (employeeId && selectedMonth && selectedYear) {
                     $.ajax({
                         url: '@Url.Action("GetLeaveDetails", "Admin")',
@@ -201,7 +188,7 @@
 
                                 // Calculate total salary dynamically if required
                                 var basicPay = parseFloat($('#basicPay').val()) || 0;
-                                var totalSalary = basicPay - parseFloat(data.LeaveDeduction);
+                                var totalSalary = salary - parseFloat(data.LeaveDeduction);
                                 $('#totalsalary').val(totalSalary.toFixed(2));
                             }
                         },
@@ -226,8 +213,7 @@
         var salary = basicPay + hra + da + increment;
         // Display calculated values
         $('#salary').val(salary.toFixed(2)); // Salary (excluding deductions)
-        //$('#totalsalary').val(salary.toFixed(2)); // Adjust this if deductions are added
-    }
+        }
 
     </script>
 
