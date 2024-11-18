@@ -3,163 +3,247 @@
     Layout = "~/Views/shared/AdminMaster.cshtml";
 }
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Generate Salary</h2>
+    <form method="post" action="@Url.Action("PayrollSubmit","Admin")">
+        <h2 class="text-center mb-4">Generate Salary</h2>
 
-    <!-- Employee ID, Designation, Month, Year -->
-    <div class="salary-section">
+        <!-- Employee ID, Designation, Month, Year -->
+        <div class="salary-section">
+            <div class="form-row">
+                <div class="col-md-3">
+                    <label for="employeeId" class="label-text">Employee ID:</label>
+                    <select id="employeeId" name="EmployeeId" class="form-control">
+                        <option value="">-- Select Employee ID --</option>
+                        @foreach (var employeeId in ViewBag.EmployeeIds)
+                        {
+                            <option value="@employeeId">@employeeId</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="designation" class="label-text">Designation:</label>
+                    <input type="text" id="designation" name="Designation" class="form-control" readonly />
+                </div>
+
+                <!-- Month Dropdown -->
+                <!--<div class="col-md-3">
+                    <label for="month" class="label-text">Month:</label>
+                    <select id="month" name="Month" class="form-control" required>
+                        <option selected disabled>Select Month</option>
+                        @foreach (var month in new List<string>
+                                                                                                                 { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" })
+                        {
+                            <option value="@month">@month</option>
+                        }
+                    </select>
+                </div>-->
+                <!-- Month Dropdown -->
+                <div class="col-md-3">
+                    <label for="month" class="label-text">Month:</label>
+                    <select id="month" name="Month" class="form-control" required>
+                        <option value="">Select Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+
+                <!-- Year Dropdown -->
+                <div class="col-md-3">
+                    <label for="year" class="label-text">Year:</label>
+                    <select id="year" name="Year" class="form-control" required>
+                        <option selected disabled>Select Year</option>
+                        @for (var year = DateTime.Now.Year; year >= DateTime.Now.Year - 10; year--) // Adjust year range as needed
+                        {
+                            <option value="@year">@year</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Name, Account Number -->
+        <div class="salary-summary">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="employeeName" class="label-text">Name:</label>
+                    <input type="text" id="employeename" name="EmployeeName" class="form-control" readonly />
+                </div>
+                <div class="col-md-6">
+                    <label for="accNumber" class="label-text">Acc No:</label>
+                    <input type="text" id="accNumber" name="AccNumber" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+
+        @*  Salary Details*@
+        <div class="salary-section">
+            <div class="form-row">
+                <div class="col-md-3">
+                    <label class="label-text">Basic Pay :</label>
+                    <input type="text" id="basicPay" name="Basicpay" class="form-control" readonly />
+                </div>
+                <div class="col-md-3">
+                    <label class="label-text">Increment (%):</label>
+                    <input type="text" id="increment" name="Increment" class="form-control" readonly />
+                </div>
+                <div class="col-md-3">
+                    <label class="label-text">HRA (%):</label>
+                    <input type="text" id="hra" name="HRA" class="form-control" readonly />
+                </div>
+                <div class="col-md-3">
+                    <label class="label-text">DA (%):</label>
+                    <input type="text" id="da" name="DA" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="salary-section">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label class="label-text">Salary:</label>
+                    <input type="text" id="salary" name="Salary" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        @* Leave Details*@
+        <div class="salary-section">
+            <div class="form-row">
+                <div class="col-md-4">
+                    <label class="label-text">Max. Leave To Be Taken:</label>
+                    <input type="text" id="totalleave" name="TotalLeave" class="form-control" value="10" readonly />
+                </div>
+                <div class="col-md-4">
+                    <label class="label-text">Total Leaves:</label>
+                    <input type="text" id="approvedleave" class="form-control" readonly />
+                </div>
+                <div class="col-md-4">
+                    <label class="label-text">Deduction:</label>
+                    <input type="text" id="leavededuction" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="salary-section">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label class="label-text">Total Salary:</label>
+                    <input type="text" id="totalsalary" name="TotalSalary" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Generate Salary Button -->
         <div class="form-row">
-            <div class="col-md-3">
-                <label for="employeeId" class="label-text">Employee ID:</label>
-                <select id="employeeId" name="selectedEmployeeId" class="form-control">
-                    <option value="">-- Select Employee ID --</option>
-                    @foreach (var employeeId in ViewBag.EmployeeIds)
-                    {
-                        <option value="@employeeId">@employeeId</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="designation" class="label-text">Designation:</label>
-                <input type="text" id="designation" class="form-control" readonly />
-            </div>
-
-            <!-- Month Dropdown -->
-            <div class="col-md-3">
-                <label for="month" class="label-text">Month:</label>
-                <select id="month" class="form-control">
-                    <option selected disabled>Select Month</option>
-                    @foreach (var month in new List<string>
-                                        { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" })
-                    {
-                        <option value="@month">@month</option>
-                    }
-                </select>
-            </div>
-
-            <!-- Year Dropdown -->
-            <div class="col-md-3">
-                <label for="year" class="label-text">Year:</label>
-                <select id="year" class="form-control">
-                    <option selected disabled>Select Year</option>
-                    @for (var year = DateTime.Now.Year; year >= DateTime.Now.Year - 10; year--) // Adjust year range as needed
-                    {
-                        <option value="@year">@year</option>
-                    }
-                </select>
+            <div class="col text-right">
+                <button type="submit" class="btn btn-custom">Generate Salary</button>
             </div>
         </div>
-            </div>
-
-    <!-- Employee Name, Account Number -->
-    <div class="salary-summary">
-        <div class="form-row">
-            <div class="col-md-6">
-                <label for="employeeName" class="label-text">Name:</label>
-                <input type="text" id="employeename" class="form-control" readonly/>
-            </div>
-            <div class="col-md-6">
-                <label for="accNumber" class="label-text">Acc No:</label>
-                <input type="text" id="accNumber" class="form-control" readonly/>
-            </div>
-        </div>
-    </div>
-
-    <!-- Salary Details -->
-    <div class="salary-section">
-        <div class="form-row">
-            <div class="col-md-4">
-                <label class="label-text">Basic Pay:</label>
-                <input type="text" id="basicPay" class="form-control" readonly />
-            </div>
-            <div class="col-md-4">
-                <label class="label-text">Increment:</label>
-                <input type="text" id="increment" class="form-control" readonly />
-            </div>
-            <div class="col-md-4">
-                <label class="label-text">Salary:</label>
-                <p>₹55,000</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Allowances and Deductions -->
-    <div class="salary-section">
-        <div class="form-row">
-            @*<div class="col-md-6">
-                <label class="label-text">Travel Allowance:</label>
-                <p>₹1,000</p>
-            </div>
-            <div class="col-md-6">
-                <label class="label-text">Medical Allowance:</label>
-                <p>₹1,000</p>
-            </div>*@
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                <label class="label-text">HRA:</label>
-                <input type="text" id="hra" class="form-control" readonly />
-            </div>
-            <div class="col-md-6">
-                <label class="label-text">DA:</label>
-                <input type="text" id="da" class="form-control" readonly />
-            </div>
-        </div>
-    </div>
-
-    <!-- Leave Details -->
-    <div class="salary-section">
-        <div class="form-row">
-            <div class="col-md-4">
-                <label class="label-text">Total Leave:</label>
-                <p>0</p>
-            </div>
-            <div class="col-md-4">
-                <label class="label-text">Approved Leave:</label>
-                <p>0</p>
-            </div>
-            <div class="col-md-4">
-                <label class="label-text">Leave Deduction:</label>
-                <p>₹0</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Generate Salary Button -->
-    <div class="form-row">
-        <div class="col text-right">
-            <button type="submit" class="btn btn-custom">Generate Salary</button>
-        </div>
-    </div>
+    </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#employeeId').change(function () {
-            var selectedEmployeeId = $(this).val(); 
-
-            if (selectedEmployeeId) {
-                $.ajax({
-                    url: '@Url.Action("GetEmployeeDetails", "Admin")',
-                    type: 'GET',
-                    data: { employeeId: selectedEmployeeId },
-                    success: function (data) {
-                        if (data) {
-                            $('#employeename').val(data.EmployeeName);
-                            $('#designation').val(data.Designation);
-                            $('#basicPay').val(data.BasicPay);
-                            $('#accNumber').val(data.AccountNo);
-                            $('#increment').val(data.Increment);
-                            $('#hra').val(data.HRA);
-                            $('#da').val(data.DA);
+        $(document).ready(function () {
+            $('#employeeId').change(function () {
+                var selectedEmployeeId = $(this).val();
+                //var selectedMonth = $('#month').val();
+                //var selectedYear = $('#year').val();
+                if (selectedEmployeeId ) {
+                    $.ajax({
+                        url: '@Url.Action("GetEmployeeDetails", "Admin")',
+                        type: 'GET',
+                        data: { employeeId: selectedEmployeeId },
+                        success: function (data) {
+                            console.log("Employee details fetched:", data);
+                            if (data) {
+                                $('#employeename').val(data.EmployeeName);
+                                $('#designation').val(data.Designation);
+                                $('#basicPay').val(data.BasicPay);
+                                $('#accNumber').val(data.AccountNo);
+                                $('#increment').val(data.Increment);
+                                $('#hra').val(data.HRA);
+                                $('#da').val(data.DA);
+                            }
+                            calculateSalary();
+                        },
+                        error: function () {
+                            alert("An error occurred while retrieving employee details.");
                         }
-                    },
-                    error: function () {
-                        alert("An error occurred while retrieving employee details.");
-                    }
-                });
-            }
+                    });
+                }
+            });
+            $('#employeeId, #month, #year').change(function () {
+                var employeeId = $('#employeeId').val();
+                var selectedMonth = $('#month').val();
+                var selectedYear = $('#year').val();
+                var basicPay = parseFloat($('#basicPay').val()) || 0;
+                
+
+                if (employeeId && selectedMonth && selectedYear) {
+                    $.ajax({
+                        url: '@Url.Action("GetLeaveDetails", "Admin")',
+                        type: 'GET',
+                        data: { employeeId: employeeId, selectedYear: selectedYear, selectedMonth: selectedMonth,BasicPay:basicPay},
+                        success: function (data) {
+                            console.log("Employee details fetched:", data);
+                            if (data) {
+                                $('#approvedleave').val(data.ApprovedLeave);
+                                $('#leavededuction').val(data.LeaveDeduction.toFixed(2));
+
+                                // Calculate total salary dynamically if required
+                                var basicPay = parseFloat($('#basicPay').val()) || 0;
+                                var totalSalary = basicPay - parseFloat(data.LeaveDeduction);
+                                $('#totalsalary').val(totalSalary.toFixed(2));
+                            }
+                        },
+                        error: function () {
+                            alert("Error retrieving leave details.");
+                        }
+                    });
+                }
+            });
         });
-    });
-</script>
+    function calculateSalary() {
+        // Parse values from inputs
+        var basicPay = parseFloat($('#basicPay').val()) || 0;
+        var incrementPercent = parseFloat($('#increment').val()) || 0;
+        var hraPercent = parseFloat($('#hra').val()) || 0;
+        var daPercent = parseFloat($('#da').val()) || 0;
+
+        // Perform calculations
+        var hra = (basicPay * hraPercent) / 100;
+        var da = (basicPay * daPercent) / 100;
+        var increment = (basicPay * incrementPercent) / 100;
+        var salary = basicPay + hra + da + increment;
+        // Display calculated values
+        $('#salary').val(salary.toFixed(2)); // Salary (excluding deductions)
+        //$('#totalsalary').val(salary.toFixed(2)); // Adjust this if deductions are added
+    }
+
+    </script>
+
+                <script>
+                    $(document).ready(function () {
+                        $('form').submit(function (e) {
+                            const month = $('#month').val();
+                            const year = $('#year').val();
+                            if (!month || !year) {
+                                alert('Please select both Month and Year before generating the salary.');
+                                e.preventDefault(); // Prevent form submission
+                            }
+                        });
+                    });
+                </script>
+
+
 
 

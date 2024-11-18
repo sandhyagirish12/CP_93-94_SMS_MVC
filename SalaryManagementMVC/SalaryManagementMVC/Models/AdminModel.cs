@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
@@ -302,7 +303,57 @@ namespace SalaryManagementMVC.Models
             }
 
         }
+        public DataTable GetApprovedLeaves(string employeeId, int selectedYear, int selectedMonth)
+        {
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT FromDate, ToDate 
+            FROM LeaveDetails 
+            WHERE EmployeeId = @EmployeeId 
+              AND Status = 'approve' 
+              AND YEAR(FromDate) = @Year 
+              AND MONTH(FromDate) = @Month";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                    cmd.Parameters.AddWithValue("@Year", selectedYear);
+                    cmd.Parameters.AddWithValue("@Month", selectedMonth - 1); // Previous month
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
 
+
+        public bool PayrollRegister(List<string> employeeData)
+        {
+            string employeeId = employeeData[0];
+            string month = employeeData[1];
+            string year = employeeData[2];
+            decimal salary =Convert.ToDecimal(employeeData[3]);
+            string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertquery = "INSERT INTO Payroll(EmployeeId,Month,Year,NetSalary) VALUES(@eid, @month, @year, @salary)";
+                SqlCommand command = new SqlCommand(insertquery, connection);
+                command.Parameters.AddWithValue("@eid", employeeId);
+                command.Parameters.AddWithValue("@month", month);
+                command.Parameters.AddWithValue("@year", year);
+                command.Parameters.AddWithValue("@salary", salary);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            
+        }
         public bool CreateDeduction(int did, string dname, decimal percentage, decimal amount)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -335,7 +386,6 @@ namespace SalaryManagementMVC.Models
             }
             return dt;
         }
-
         public DataTable GetDeduction(int did)
         {
             DataTable dt = new DataTable();
@@ -379,7 +429,40 @@ namespace SalaryManagementMVC.Models
                
             }
         }
-        public DataTable GetLeaveDetails()
+
+    //    public DataTable EmployeeLeaveDetails(string eid)
+    //    {
+    //        DataTable dt = new DataTable();
+    //        string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+    //        using (SqlConnection connection = new SqlConnection(connectionString))
+    //        {
+    //            connection.Open();
+    //            SqlCommand command = new SqlCommand(@"
+    //            SELECT * 
+    //            FROM LeaveDetails 
+    //            WHERE EmployeeId = @EmployeeId AND 
+    //                  AND MONTH(FromDate) = @Month 
+    //                  AND YEAR(FromDate) = @Year
+    //                  Status = 'Approved'", connection);
+
+
+    //            command.Parameters.AddWithValue("@EmployeeId", eid);
+    //            command.Parameters.AddWithValue("@Month", month);
+    //            command.Parameters.AddWithValue("@Year", year);
+    //            SqlDataAdapter adapter = new SqlDataAdapter(command);
+    //            adapter.Fill(dt);
+
+    //        }
+
+    //    return dt;
+    //}
+
+    private int GetMonthNumber(string monthName)
+{
+    DateTime monthDate = DateTime.ParseExact(monthName, "MMMM", System.Globalization.CultureInfo.InvariantCulture);
+    return monthDate.Month;
+}
+public DataTable GetLeaveDetails()
         {
             DataTable dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;

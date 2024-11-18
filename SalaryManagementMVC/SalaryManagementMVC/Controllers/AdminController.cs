@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace SalaryManagementMVC.Controllers
 {
@@ -297,8 +298,8 @@ namespace SalaryManagementMVC.Controllers
 
         public ActionResult ManagePayroll()
         {
-            AdminModel model= new AdminModel();
-            DataTable dt=model.GetAllEmployee();
+            AdminModel model = new AdminModel();
+            DataTable dt = model.GetAllEmployee();
             List<string> employeeIds = new List<string>();
             if (dt.Rows.Count > 0)
             {
@@ -320,7 +321,6 @@ namespace SalaryManagementMVC.Controllers
 
             if (dt.Rows.Count > 0)
             {
-                // Return employee data as JSON
                 var employeeData = new
                 {
                     EmployeeName = dt.Rows[0]["Fname"].ToString() + " " + dt.Rows[0]["Lname"].ToString(),
@@ -330,16 +330,88 @@ namespace SalaryManagementMVC.Controllers
                     AccountNo = dt.Rows[0]["Accountno"].ToString(),
                     Increment = dt.Rows[0]["Increment"].ToString(),
                     HRA = dt.Rows[0]["HRA"].ToString(),
-                    DA = dt.Rows[0]["DA"].ToString()
+                    DA = dt.Rows[0]["DA"].ToString(),
+                    MaxLeave = 10 // Set maximum leave to 10
 
-                    };
-
+                };
                 return Json(employeeData, JsonRequestBehavior.AllowGet);
             }
 
             return Json(null, JsonRequestBehavior.AllowGet);
         }
+        
+        public JsonResult GetLeaveDetails(string employeeId, int selectedYear, int selectedMonth,float basicpay)
+        {
+            AdminModel model = new AdminModel();
+            DataTable dt = model.GetApprovedLeaves(employeeId, selectedYear, selectedMonth);
 
+            int approvedLeaves = 0;
+
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    DateTime fromDate = Convert.ToDateTime(row["FromDate"]);
+                    DateTime toDate = Convert.ToDateTime(row["ToDate"]);
+                    approvedLeaves += (toDate - fromDate).Days + 1; // Include both fromDate and toDate
+                }
+            }
+
+            // Calculate leave deduction
+            int maxLeave = 10;
+            int excessLeave = Math.Max(0, approvedLeaves - maxLeave);
+            float leaveDeduction = excessLeave *(basicpay/30); 
+
+            var leaveDetails = new
+            {
+                ApprovedLeave = approvedLeaves,
+                LeaveDeduction = leaveDeduction
+            };
+
+            return Json(leaveDetails, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult PayrollSubmit(FormCollection frm)
+        {
+           // var employeeId = frm["EmployeeId"];
+           // var month = frm["Month"];
+          //  var year = frm["Year"];
+            //var basicPay = Convert.ToDecimal(frm["BasicPay"]);
+            //var hraPercent = Convert.ToDecimal(frm["HRA"]); // HRA in percentage
+            //var daPercent = Convert.ToDecimal(frm["DA"]);  // DA in percentage
+            //var incrementPercent = Convert.ToDecimal(frm["Increment"]); // Increment in percentage
+
+            // Perform the calculations
+            //var hra = (basicPay * hraPercent) / 100;
+            //var da = (basicPay * daPercent) / 100;
+            //var increment = (basicPay * incrementPercent) / 100;
+            //var salary = basicPay + hra + da + increment;
+
+            var employeeData = new List<string>
+            {
+                frm["EmployeeId"],
+                frm["Month"],
+                frm["Year"],
+                frm["salary"],
+                //frm["Basicpay"],
+                //frm["Increment"],
+                //frm["HRA"],
+                //frm["DA"]
+            };
+
+            AdminModel model = new AdminModel();
+
+            // Pass the list to the model class method
+            bool isUpdated = model.PayrollRegister(employeeData);
+            if (isUpdated)
+            {
+                ViewBag.Message = "Successfully Updated";
+
+            }
+                return RedirectToAction("ManagePayroll");
+           
+            
+        }
         public ActionResult ManageLoan()
         {
             AdminModel model = new AdminModel();
